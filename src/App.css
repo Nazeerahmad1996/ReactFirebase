@@ -1,24 +1,42 @@
+
+@import url('https://fonts.googleapis.com/css?family=Julius+Sans+One');
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Baloo+Thambi');
 .App {
   text-align: center;
 
+}
+.Logo{
+  font-family: 'Abril Fatface', cursive;
 }
 .MainImage{
   width: 100%;
   height: auto;
   margin-top: 45px;
 }
+.FormHeader{
+  background-color: #2090F9;
+  padding: 10px;
+}
+.FromHeading{
+  font-family: 'Julius Sans One', sans-serif;
 
+}
 .cards{
   padding: 20px;
   border-radius: 5px;
 }
 
 .form-group{
-  border:4px solid white;
-  padding: 10px;
-  background-color: #cc2f2f;
-  border-radius: 10px;
+  border: 0.8px solid #c5bbbb;
+  /* background-color: #cc2f2f; */
 }
+.CardTitle{
+  font-size: 22px;
+}
+.CardDescription{
+  font-size: 13px;
+}
+
 
 .form-groups{
   border:1px solid #c5bbbb;
@@ -32,11 +50,8 @@
   background-color: #FFFFFF;
   padding: 15px;
   height: 420px;
-  border-radius: 8px;
 }
-.Headingdivider{
-  border-color: #FFFFFF
-}
+
 .FromHeading{
   color: white;
   font-weight: 700;

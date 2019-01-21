@@ -22,15 +22,15 @@ class App extends Component {
     this.state = {
 
       FirstName: "",
-      LastName: null,
-      Email: null,
-      OtherContact: null,
-      OptionChoose: null,
-      MobileNumber: null,
-      Region: null,
+      LastName: "",
+      Email: "",
+      OtherContact: "",
+      OptionChoose: "",
+      MobileNumber: "",
+      Region: "",
 
-      AreaOfIncident: null,
-      Comment: null,
+      AreaOfIncident: "",
+      Comment: "",
 
       CommunicationCount: '',
       ReportCount: '',
@@ -77,50 +77,76 @@ class App extends Component {
 
   }
   Communicate() {
-    firebase.database().ref('Communicate').push({
-      PhoneNumber: this.state.MobileNumber,
-      Region: this.state.Region,
+    if (this.state.MobileNumber !== "" && this.state.Region !== "") {
+      firebase.database().ref('Communicate').push({
+        PhoneNumber: this.state.MobileNumber,
+        Region: this.state.Region,
 
-    }).then((data) => {
-      //success callback
-      alert("Successful!")
-    }).catch((error) => {
-      //error callback
+      }).then((data) => {
+        this.setState({
+          MobileNumber: null,
+          Region: null
+        })
+        //success callback
+        alert("Successful!")
+      }).catch((error) => {
+        //error callback
+        alert(
+          'Upload Failed, Try Again!'
+        )
+      })
+    }
+    else {
       alert(
-        'Upload Failed, Try Again!'
+        'Please Fill Form Proper!'
       )
-    })
+    }
   }
   ReportIncident() {
-    firebase.database().ref('ReportIncident').push({
-      AreaIncident: this.state.AreaOfIncident,
-      Comment: this.state.Comment,
-    }).then((data) => {
-      //success callback
-      alert("Successful!")
-    }).catch((error) => {
-      //error callback
+    if (this.state.AreaOfIncident !== "" && this.state.Comment !== "") {
+      firebase.database().ref('ReportIncident').push({
+        AreaIncident: this.state.AreaOfIncident,
+        Comment: this.state.Comment,
+      }).then((data) => {
+        //success callback
+        alert("Successful!")
+      }).catch((error) => {
+        //error callback
+        alert(
+          'Upload Failed, Try Again!'
+        )
+      })
+    }
+    else {
       alert(
-        'Upload Failed, Try Again!'
+        'Please Fill Form Proper!'
       )
-    })
+    }
   }
   handleClick() {
-    firebase.database().ref('Volunteer').push({
-      Name: this.state.FirstName,
-      Last: this.state.LastName,
-      Email: this.state.Email,
-      OtherContact: this.state.OtherContact,
-      OptionChoose: this.state.OptionChoose,
-    }).then((data) => {
-      //success callback
-      alert("Successful!")
-    }).catch((error) => {
-      //error callback
+    if (this.state.FirstName !== "" && this.state.LastName !== "" && this.state.Email !== ""
+      && this.state.OtherContact !== "" && this.state.OptionChoose !== "") {
+      firebase.database().ref('Volunteer').push({
+        Name: this.state.FirstName,
+        Last: this.state.LastName,
+        Email: this.state.Email,
+        OtherContact: this.state.OtherContact,
+        OptionChoose: this.state.OptionChoose,
+      }).then((data) => {
+        //success callback
+        alert("Successful!")
+      }).catch((error) => {
+        //error callback
+        alert(
+          'Upload Failed  ' + error
+        )
+      })
+    }
+    else {
       alert(
-        'Upload Failed  ' + error
+        'Please Fill Form Proper!'
       )
-    })
+    }
   }
 
 
@@ -133,7 +159,7 @@ class App extends Component {
           <header>
             <MDBNavbar style={bgPink} dark expand="md" scrolling fixed="top">
               <MDBNavbarBrand href="/">
-                <strong>Arise Zimbabwe</strong>
+                <h3 className="Logo">Arise Zimbabwe</h3>
               </MDBNavbarBrand>
               {/* <MDBNavbarNav right>
                 <p className="NavText">This bar will disappear when your website is live. This link will expire in 27 days.</p>
@@ -152,11 +178,12 @@ class App extends Component {
 
 
             <MDBRow className="FormCard">
-              <MDBCol xl="4" className="form-group">
-                <div>
-                  <h4 className="FromHeading"><strong>VOLUNTEER</strong></h4>
-                  <h4 className="FromHeading"><strong>{this.state.VolunteerCount}</strong></h4>
-
+              <MDBCol xl="4">
+                <div className="form-group">
+                  <div className="FormHeader">
+                    <h4 className="FromHeading"><strong>VOLUNTEER</strong></h4>
+                    <h4 className="FromHeading"><strong>{this.state.VolunteerCount}</strong></h4>
+                  </div>
                   <hr className="Headingdivider" />
                   <div className="FormContent">
                     <p>To volunteer with Arise Zimbabwe, enter a few details for the campaign team to contact you.</p>
@@ -164,7 +191,7 @@ class App extends Component {
                     <MDBRow>
                       <MDBCol xl="6">
                         <div>
-                          <input onChange={(e) => { this.setState({ FirstName: e.target.value }) }}
+                          <input value={this.state.FirstName} onChange={(e) => { this.setState({ FirstName: e.target.value }) }}
                             type="Text" className="form-control" placeholder="First Name" />
                         </div>
                       </MDBCol>
@@ -228,20 +255,23 @@ class App extends Component {
 
                 </div>
               </MDBCol>
-              <MDBCol xl="4" className="form-group">
-                <div>
-                  <h4 className="FromHeading"><strong>COMMUNICATE</strong></h4>
-                  <h4 className="FromHeading"><strong>{this.state.CommunicationCount}</strong></h4>
+              <MDBCol xl="4">
+                <div className="form-group">
+                  <div className="FormHeader">
+                    <h4 className="FromHeading"><strong>COMMUNICATE</strong></h4>
+                    <h4 className="FromHeading"><strong>{this.state.CommunicationCount}</strong></h4>
+                  </div>
+
                   <hr className="Headingdivider" />
                   <div className="FormContent">
                     <p>Enter the Mobile numbers of your friends & relatives so they can receive critical communication via SMS Broadcast during internet black out in Zimbabwe.</p>
                     <p>* INDICATES REQUIRED FIELD</p>
                     <div className="formInput">
-                      <input onChange={(e) => { this.setState({ MobileNumber: e.target.value }) }}
+                      <input value={this.state.MobileNumber} onChange={(e) => { this.setState({ MobileNumber: e.target.value }) }}
                         type="Text" className="form-control" placeholder="Enter Mobile Number" />
                     </div>
                     <div className="formInput">
-                      <input onChange={(e) => { this.setState({ Region: e.target.value }) }}
+                      <input value={this.state.Region} onChange={(e) => { this.setState({ Region: e.target.value }) }}
                         type="Text" className="form-control" placeholder="REGION/E.G MANICALAND,MIDLANDS ETC " />
                     </div>
                     <div className="text-center">
@@ -253,10 +283,12 @@ class App extends Component {
                 </div>
               </MDBCol>
 
-              <MDBCol xl="4" className="form-group">
-                <div >
-                  <h4 className="FromHeading"><strong>REPORT INCIDENTS</strong></h4>
-                  <h4 className="FromHeading"><strong>{this.state.ReportCount}</strong></h4>
+              <MDBCol xl="4">
+                <div className="form-group">
+                  <div className="FormHeader">
+                    <h4 className="FromHeading"><strong>REPORT INCIDENTS</strong></h4>
+                    <h4 className="FromHeading"><strong>{this.state.ReportCount}</strong></h4>
+                  </div>
 
                   <hr className="Headingdivider" />
                   <div className="FormContent">
@@ -300,121 +332,116 @@ class App extends Component {
           <MDBContainer className="cards">
 
             <MDBRow>
-              <MDBCol md="4" className="cardMargin">
+              <MDBCol md="3" className="cardMargin">
                 <Card narrow className="CardBody">
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
-                    <CardTitle>Harare Province</CardTitle>
-                    <CardText>Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardTitle className="CardTitle">Harare Province</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
               </MDBCol>
-              <MDBCol md="4" className="cardMargin">
+              <MDBCol md="3" className="cardMargin">
                 <Card narrow>
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
-                    <CardTitle>Bulawayo Province</CardTitle>
-                    <CardText>Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardTitle className="CardTitle">Bulawayo Province</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
               </MDBCol>
-              <MDBCol md="4" className="cardMargin">
+              <MDBCol md="3" className="cardMargin">
                 <Card narrow>
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
-                    <CardTitle>Masvingo Province</CardTitle>
-                    <CardText>Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardTitle className="CardTitle">Masvingo Province</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
               </MDBCol>
 
-            </MDBRow>
-
-            <MDBRow>
-              <MDBCol md="4" className="cardMargin">
+              <MDBCol md="3" className="cardMargin">
                 <Card narrow>
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
-                    <CardTitle>Mashonaland Central</CardTitle>
-                    <CardText>Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardTitle className="CardTitle">Mashonaland Central</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
               </MDBCol>
-              <MDBCol md="4" className="cardMargin">
+              <MDBCol md="3" className="cardMargin">
                 <Card narrow>
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
-                    <CardTitle>Mashonaland East</CardTitle>
-                    <CardText>Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
-                    <MDBBtn color="amber">Join Now</MDBBtn>
-                  </CardBody>
-                </Card>
-              </MDBCol>
-              <MDBCol md="4" className="cardMargin">
-                <Card narrow>
-                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
-                  <CardBody cascade>
-                    <CardTitle>Mashonaland West</CardTitle>
-                    <CardText>Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardTitle className="CardTitle">Mashonaland East</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
               </MDBCol>
 
-            </MDBRow>
-
-            <MDBRow>
-              <MDBCol md="4" className="cardMargin">
+              <MDBCol md="3" className="cardMargin">
                 <Card narrow>
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
-                    <CardTitle>Manicaland Province</CardTitle>
-                    <CardText>Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
-                    <MDBBtn color="amber">Join Now</MDBBtn>
-                  </CardBody>
-                </Card>
-              </MDBCol>
-              <MDBCol md="4" className="cardMargin">
-                <Card narrow>
-                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
-                  <CardBody cascade>
-                    <CardTitle>Matebeleland North</CardTitle>
-                    <CardText>Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
-                    <MDBBtn color="amber">Join Now</MDBBtn>
-                  </CardBody>
-                </Card>
-              </MDBCol>
-              <MDBCol md="4" className="cardMargin">
-                <Card narrow>
-                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
-                  <CardBody cascade>
-                    <CardTitle>Matebeleland South</CardTitle>
-                    <CardText>Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
-                    <MDBBtn color="amber">Join Now</MDBBtn>
-                  </CardBody>
-                </Card>
-              </MDBCol>
-              <MDBCol md="4" className="cardMargin">
-                <Card narrow>
-                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
-                  <CardBody cascade>
-                    <CardTitle>Midlands Province</CardTitle>
-                    <CardText>Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardTitle className="CardTitle">Mashonaland West</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
               </MDBCol>
 
-              <MDBCol md="8" className="cardMargin">
+              <MDBCol md="3" className="cardMargin">
+                <Card narrow>
+                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
+                  <CardBody cascade>
+                    <CardTitle className="CardTitle">Manicaland Province</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <MDBBtn color="amber">Join Now</MDBBtn>
+                  </CardBody>
+                </Card>
+              </MDBCol>
+              <MDBCol md="3" className="cardMargin">
+                <Card narrow>
+                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
+                  <CardBody cascade>
+                    <CardTitle className="CardTitle">Matebeleland North</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <MDBBtn color="amber">Join Now</MDBBtn>
+                  </CardBody>
+                </Card>
+              </MDBCol>
+              <MDBCol md="3" className="cardMargin">
+                <Card narrow>
+                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
+                  <CardBody cascade>
+                    <CardTitle className="CardTitle">Matebeleland South</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <MDBBtn color="amber">Join Now</MDBBtn>
+                  </CardBody>
+                </Card>
+              </MDBCol>
+              <MDBCol md="3" className="cardMargin">
+                <Card narrow>
+                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
+                  <CardBody cascade>
+                    <CardTitle className="CardTitle">Midlands Province</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <MDBBtn color="amber">Join Now</MDBBtn>
+                  </CardBody>
+                </Card>
+              </MDBCol>
+
+              <MDBCol md="6" className="cardMargin">
                 <Card narrow>
                   <TwitterTimelineEmbed
                     sourceType="profile"
                     screenName="saurabhnemade"
-                    options={{ height: 420 }}
+                    options={{ height: 400 }}
                   />
                 </Card>
               </MDBCol>
@@ -426,42 +453,42 @@ class App extends Component {
             <Button href="#">Diaspsora</Button>
 
             <MDBRow>
-              <MDBCol md="4" className="cardMargin">
+              <MDBCol md="3" className="cardMargin">
                 <Card narrow>
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
-                    <CardTitle>UK & Europe</CardTitle>
-                    <CardText>Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardTitle className="CardTitle">UK & Europe</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
               </MDBCol>
-              <MDBCol md="4" className="cardMargin">
+              <MDBCol md="3" className="cardMargin">
                 <Card narrow>
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
-                    <CardTitle>SA & Southern  Africa</CardTitle>
-                    <CardText>Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardTitle className="CardTitle">SA & Southern  Africa</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
               </MDBCol>
-              <MDBCol md="4" className="cardMargin">
+              <MDBCol md="3" className="cardMargin">
                 <Card narrow>
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
-                    <CardTitle>Australia & New Zealand</CardTitle>
-                    <CardText>Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardTitle className="CardTitle">Australia & New Zealand</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
               </MDBCol>
-              <MDBCol md="4" className="cardMargin">
+              <MDBCol md="3" className="cardMargin">
                 <Card narrow>
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
-                    <CardTitle>USA & Canada</CardTitle>
-                    <CardText>Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardTitle className="CardTitle">USA & Canada</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
