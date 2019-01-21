@@ -1,30 +1,128 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import firebaseConfig from './Firebase';
 import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
+import * as firebase from 'firebase';
 import {
   MDBContainer, MDBNavbar, MDBNavbarBrand, Button, Card, CardBody, CardImage, CardTitle, CardText,
   MDBBtn, MDBRow, MDBCol, MDBIcon, Carousel, CarouselInner, CarouselItem, Container, Row, Col,
-  CardFooter, Tooltip
+  MDBAlert, Tooltip
 } from 'mdbreact';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed';
+
+firebase.initializeApp(firebaseConfig);
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      collapse: false,
+
+      FirstName: "",
+      LastName: null,
+      Email: null,
+      OtherContact: null,
+      OptionChoose: null,
+      MobileNumber: null,
+      Region: null,
+
+      AreaOfIncident: null,
+      Comment: null,
+
+      CommunicationCount: '',
+      ReportCount: '',
+      VolunteerCount: '',
     };
-    this.onClick = this.onClick.bind(this);
   }
 
-  onClick() {
-    this.setState({
-      collapse: !this.state.collapse,
+
+  componentDidMount() {
+    var that = this;
+    var starCountRef = firebase.database().ref('Communicate');
+    starCountRef.on('value', function (snapshot) {
+
+      var number = snapshot.numChildren();
+      console.log("There are>>>>>>>>>>>>>>> " + number + " messages");
+      that.setState({
+        CommunicationCount: number,
+      })
+
     });
+
+    var starCountRef1 = firebase.database().ref('ReportIncident');
+    starCountRef1.on('value', function (snapshot) {
+
+      var number = snapshot.numChildren();
+      console.log("There are>>>>>>>>>>>>>>> " + number + " messages");
+      that.setState({
+        ReportCount: number,
+      })
+
+    });
+
+    var starCountRef2 = firebase.database().ref('Volunteer');
+    starCountRef2.on('value', function (snapshot) {
+
+      var number = snapshot.numChildren();
+      console.log("There are>>>>>>>>>>>>>>> " + number + " messages");
+      that.setState({
+        VolunteerCount: number,
+      })
+
+    });
+
+
   }
+  Communicate() {
+    firebase.database().ref('Communicate').push({
+      PhoneNumber: this.state.MobileNumber,
+      Region: this.state.Region,
+
+    }).then((data) => {
+      //success callback
+      alert("Successful!")
+    }).catch((error) => {
+      //error callback
+      alert(
+        'Upload Failed, Try Again!'
+      )
+    })
+  }
+  ReportIncident() {
+    firebase.database().ref('ReportIncident').push({
+      AreaIncident: this.state.AreaOfIncident,
+      Comment: this.state.Comment,
+    }).then((data) => {
+      //success callback
+      alert("Successful!")
+    }).catch((error) => {
+      //error callback
+      alert(
+        'Upload Failed, Try Again!'
+      )
+    })
+  }
+  handleClick() {
+    firebase.database().ref('Volunteer').push({
+      Name: this.state.FirstName,
+      Last: this.state.LastName,
+      Email: this.state.Email,
+      OtherContact: this.state.OtherContact,
+      OptionChoose: this.state.OptionChoose,
+    }).then((data) => {
+      //success callback
+      alert("Successful!")
+    }).catch((error) => {
+      //error callback
+      alert(
+        'Upload Failed  ' + error
+      )
+    })
+  }
+
 
   render() {
     const bgPink = { backgroundColor: '#e91e63' }
@@ -57,6 +155,8 @@ class App extends Component {
               <MDBCol xl="4" className="form-group">
                 <div>
                   <h4 className="FromHeading"><strong>VOLUNTEER</strong></h4>
+                  <h4 className="FromHeading"><strong>{this.state.VolunteerCount}</strong></h4>
+
                   <hr className="Headingdivider" />
                   <div className="FormContent">
                     <p>To volunteer with Arise Zimbabwe, enter a few details for the campaign team to contact you.</p>
@@ -64,12 +164,14 @@ class App extends Component {
                     <MDBRow>
                       <MDBCol xl="6">
                         <div>
-                          <input type="Text" className="form-control" placeholder="First Name" />
+                          <input onChange={(e) => { this.setState({ FirstName: e.target.value }) }}
+                            type="Text" className="form-control" placeholder="First Name" />
                         </div>
                       </MDBCol>
                       <MDBCol xl="6">
                         <div>
-                          <input type="Text" className="form-control" placeholder="Last Name" />
+                          <input onChange={(e) => { this.setState({ LastName: e.target.value }) }}
+                            type="Text" className="form-control" placeholder="Last Name" />
                         </div>
                       </MDBCol>
                     </MDBRow>
@@ -77,44 +179,46 @@ class App extends Component {
                     <MDBRow className="formInput">
                       <MDBCol xl="6">
                         <div>
-                          <input type="email" className="form-control" placeholder="e-mail" />
+                          <input onChange={(e) => { this.setState({ Email: e.target.value }) }}
+                            type="email" className="form-control" placeholder="e-mail" />
                         </div>
                       </MDBCol>
                       <MDBCol xl="6">
                         <div>
-                          <input type="Text" className="form-control" placeholder="Other Contacts" />
+                          <input onChange={(e) => { this.setState({ OtherContact: e.target.value }) }}
+                            type="Text" className="form-control" placeholder="Other Contacts" />
                         </div>
                       </MDBCol>
                     </MDBRow>
 
                     <div className="formInput">
-                      <select className="browser-default custom-select">
+                      <select onChange={(e) => { this.setState({ OptionChoose: e.target.value }) }} className="browser-default custom-select">
                         <option>Choose your option</option>
-                        <option value="1">Writing</option>
-                        <option value="2">Legal</option>
-                        <option value="3">Finance</option>
-                        <option value="4">Policy</option>
-                        <option value="5">Adminstration</option>
-                        <option value="6">Information/PR</option>
-                        <option value="7">Social Media</option>
-                        <option value="8">Security</option>
-                        <option value="9">Constitution</option>
-                        <option value="10">Youth</option>
-                        <option value="11">Gender</option>
-                        <option value="12">Entertainment</option>
-                        <option value="13">Journalism</option>
-                        <option value="14">Research</option>
-                        <option value="15">Health</option>
-                        <option value="16">Transport</option>
-                        <option value="17">Humanitarinan</option>
-                        <option value="18">Housing</option>
-                        <option value="19">Policing</option>
-                        <option value="20E">Strategy</option>
+                        <option value="Writing">Writing</option>
+                        <option value="Legal">Legal</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Policy">Policy</option>
+                        <option value="Adminstration">Adminstration</option>
+                        <option value="Information/PR">Information/PR</option>
+                        <option value="Social Media">Social Media</option>
+                        <option value="Security">Security</option>
+                        <option value="Constitution">Constitution</option>
+                        <option value="Youth">Youth</option>
+                        <option value="Gender">Gender</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Journalism">Journalism</option>
+                        <option value="Research">Research</option>
+                        <option value="Health">Health</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Humanitarinan">Humanitarinan</option>
+                        <option value="Housing">Housing</option>
+                        <option value="Policing">Policing</option>
+                        <option value="Strategy">Strategy</option>
 
                       </select>
 
                       <div className="text-center">
-                        <MDBBtn outline color="info">
+                        <MDBBtn outline color="info" onClick={this.handleClick.bind(this)}>
                           Sumbit <MDBIcon icon="paper-plane-o" className="ml-1" />
                         </MDBBtn>
                       </div>
@@ -127,18 +231,21 @@ class App extends Component {
               <MDBCol xl="4" className="form-group">
                 <div>
                   <h4 className="FromHeading"><strong>COMMUNICATE</strong></h4>
+                  <h4 className="FromHeading"><strong>{this.state.CommunicationCount}</strong></h4>
                   <hr className="Headingdivider" />
                   <div className="FormContent">
                     <p>Enter the Mobile numbers of your friends & relatives so they can receive critical communication via SMS Broadcast during internet black out in Zimbabwe.</p>
                     <p>* INDICATES REQUIRED FIELD</p>
                     <div className="formInput">
-                      <input type="Text" className="form-control" placeholder="Enter Mobile Number" />
+                      <input onChange={(e) => { this.setState({ MobileNumber: e.target.value }) }}
+                        type="Text" className="form-control" placeholder="Enter Mobile Number" />
                     </div>
                     <div className="formInput">
-                      <input type="Text" className="form-control" placeholder="REGION/E.G MANICALAND,MIDLANDS ETC " />
+                      <input onChange={(e) => { this.setState({ Region: e.target.value }) }}
+                        type="Text" className="form-control" placeholder="REGION/E.G MANICALAND,MIDLANDS ETC " />
                     </div>
                     <div className="text-center">
-                      <MDBBtn outline color="info">
+                      <MDBBtn onClick={this.Communicate.bind(this)} outline color="info">
                         Sumbit <MDBIcon icon="paper-plane-o" className="ml-1" />
                       </MDBBtn>
                     </div>
@@ -149,13 +256,16 @@ class App extends Component {
               <MDBCol xl="4" className="form-group">
                 <div >
                   <h4 className="FromHeading"><strong>REPORT INCIDENTS</strong></h4>
+                  <h4 className="FromHeading"><strong>{this.state.ReportCount}</strong></h4>
+
                   <hr className="Headingdivider" />
                   <div className="FormContent">
                     <p>Enter the Mobile numbers of your friends & relatives so they can receive critical communication via SMS Broadcast during internet black out in Zimbabwe.</p>
                     <p>* INDICATES REQUIRED FIELD</p>
 
                     <div className="formInput">
-                      <input type="email" className="form-control" placeholder="AREA OF THE INCIDENT" />
+                      <input onChange={(e) => { this.setState({ AreaOfIncident: e.target.value }) }}
+                        type="email" className="form-control" placeholder="AREA OF THE INCIDENT" />
                     </div>
 
                     <div className="formInput">
@@ -165,12 +275,13 @@ class App extends Component {
                             <i className="fa fa-pencil prefix"></i>
                           </span>
                         </div>
-                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                        <textarea onChange={(e) => { this.setState({ Comment: e.target.value }) }}
+                          className="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
                       </div>
                     </div>
 
                     <div className="text-center">
-                      <MDBBtn outline color="info">
+                      <MDBBtn onClick={this.ReportIncident.bind(this)} outline color="info">
                         Sumbit <MDBIcon icon="paper-plane-o" className="ml-1" />
                       </MDBBtn>
                     </div>
@@ -295,6 +406,16 @@ class App extends Component {
                     <CardText>Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
+                </Card>
+              </MDBCol>
+
+              <MDBCol md="8" className="cardMargin">
+                <Card narrow>
+                  <TwitterTimelineEmbed
+                    sourceType="profile"
+                    screenName="saurabhnemade"
+                    options={{ height: 420 }}
+                  />
                 </Card>
               </MDBCol>
 
@@ -537,6 +658,7 @@ class App extends Component {
                             <CardBody>
 
                               <CardTitle>Card Title</CardTitle>
+
                               <hr />
                               <CardText>
                                 Some quick example text to build on the card title and make
@@ -554,10 +676,6 @@ class App extends Component {
               </CarouselInner>
             </Carousel>
           </Container>
-
-
-
-
 
 
           <div className="VideoSliderContainers">
