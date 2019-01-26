@@ -11,7 +11,14 @@ import {
   MDBBtn, MDBRow, MDBCol, MDBIcon, Carousel, CarouselInner, CarouselItem, Container, Row, Col,
   MDBAlert, Tooltip
 } from 'mdbreact';
-import { BrowserRouter as Router } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  Redirect
+} from 'react-router-dom';
+import Messages from './Forms/Messages';
 import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed';
 
 firebase.initializeApp(firebaseConfig);
@@ -109,7 +116,7 @@ class App extends Component {
         Comment: this.state.Comment,
       }).then((data) => {
         //success callback
-        alert("Successful!")
+        alert("Successful!");
       }).catch((error) => {
         //error callback
         alert(
@@ -159,7 +166,7 @@ class App extends Component {
           <header>
             <MDBNavbar style={bgPink} dark expand="md" scrolling fixed="top">
               <MDBNavbarBrand href="/">
-                <h3 className="Logo">Arise Zimbabwe</h3>
+                <h5 className="Logo">Arise Zimbabwe</h5>
               </MDBNavbarBrand>
               {/* <MDBNavbarNav right>
                 <p className="NavText">This bar will disappear when your website is live. This link will expire in 27 days.</p>
@@ -168,22 +175,280 @@ class App extends Component {
           </header>
         </Router>
 
-        <div>
 
+
+        <div className="Form1Container">
+
+          <Container className="Form1Container2">
+            <p className="Heading2"><strong>VOLUNTEER</strong></p>
+            <p style={{ color: '#fff', textAlign: "center" }} className="FromLeftSideHeading">This is the dummy text of the form</p>
+            <Card className="Form2Card">
+              <MDBRow>
+                <MDBCol xl="5">
+                  <img className="LeftImage2" src={require('./assests/Images/formimage.jpg')} />
+                </MDBCol>
+                <MDBCol xl="7">
+
+                  <div className="Form1">
+                    <h4 className="FromHeading"><strong>VOLUNTEER</strong></h4>
+                    <h4 className="FromHeading"><strong>{this.state.VolunteerCount}</strong></h4>
+                    <p className="formBottomText">To volunteer with Arise Zimbabwe, enter a few details for the campaign team to contact you.</p>
+
+                    <div>
+
+
+                      <div className="InputDiv">
+                        <input value={this.state.FirstName} onChange={(e) => { this.setState({ FirstName: e.target.value }) }}
+                          type="Text" className="form-control" placeholder="First Name" />
+                      </div>
+
+                      <div className="InputDiv">
+                        <input onChange={(e) => { this.setState({ LastName: e.target.value }) }}
+                          type="Text" className="form-control" placeholder="Last Name" />
+                      </div>
+
+
+                      <div className="InputDiv">
+                        <input onChange={(e) => { this.setState({ Email: e.target.value }) }}
+                          type="email" className="form-control" placeholder="E-mail" />
+                      </div>
+
+                      <div className="InputDiv">
+                        <input onChange={(e) => { this.setState({ OtherContact: e.target.value }) }}
+                          type="Text" className="form-control" placeholder="Other Contacts" />
+                      </div>
+
+                      <div className="formInput">
+                        <select onChange={(e) => { this.setState({ OptionChoose: e.target.value }) }} className="browser-default custom-select">
+                          <option>Choose your option</option>
+                          <option value="Writing">Writing</option>
+                          <option value="Legal">Legal</option>
+                          <option value="Finance">Finance</option>
+                          <option value="Policy">Policy</option>
+                          <option value="Adminstration">Adminstration</option>
+                          <option value="Information/PR">Information/PR</option>
+                          <option value="Social Media">Social Media</option>
+                          <option value="Security">Security</option>
+                          <option value="Constitution">Constitution</option>
+                          <option value="Youth">Youth</option>
+                          <option value="Gender">Gender</option>
+                          <option value="Entertainment">Entertainment</option>
+                          <option value="Journalism">Journalism</option>
+                          <option value="Research">Research</option>
+                          <option value="Health">Health</option>
+                          <option value="Transport">Transport</option>
+                          <option value="Humanitarinan">Humanitarinan</option>
+                          <option value="Housing">Housing</option>
+                          <option value="Policing">Policing</option>
+                          <option value="Strategy">Strategy</option>
+
+                        </select>
+
+                        <div className="text-center">
+                          <MDBBtn onClick={this.handleClick.bind(this)} color="danger" size="sm">Submit</MDBBtn>
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </MDBCol>
+              </MDBRow>
+            </Card>
+          </Container>
+        </div>
+
+
+        {/* <div className="Form1Container">
+          <Container>
+            <p className="Heading"><strong>Volunteer</strong></p>
+            <MDBRow>
+              <MDBCol xl="6">
+                <div className="Form1TextContainer">
+                  <p style={{ color: '#fff' }} className="FromLeftSideHeading">Fill Form for volunteer and help people</p>
+                  <p style={{ color: '#fff' }} className="TextForm">To volunteer with Arise Zimbabwe, enter a few details for the campaign team to contact you.</p>
+                  <p style={{ color: '#fff' }} className="TextForm">* INDICATES REQUIRED FIELD</p>
+                </div>
+              </MDBCol>
+              <MDBCol xl="4">
+
+                <Card style={{ height: 450 }}>
+                  <div className="Form1">
+                    <h4 className="FromHeading"><strong>VOLUNTEER</strong></h4>
+                    <h4 className="FromHeading"><strong>{this.state.VolunteerCount}</strong></h4>
+                    <p className="formBottomText">To volunteer with Arise Zimbabwe, enter a few details for the campaign team to contact you.</p>
+
+                    <div>
+
+
+                      <div className="InputDiv">
+                        <input value={this.state.FirstName} onChange={(e) => { this.setState({ FirstName: e.target.value }) }}
+                          type="Text" className="form-control" placeholder="First Name" />
+                      </div>
+
+                      <div className="InputDiv">
+                        <input onChange={(e) => { this.setState({ LastName: e.target.value }) }}
+                          type="Text" className="form-control" placeholder="Last Name" />
+                      </div>
+
+
+                      <div className="InputDiv">
+                        <input onChange={(e) => { this.setState({ Email: e.target.value }) }}
+                          type="email" className="form-control" placeholder="E-mail" />
+                      </div>
+
+                      <div className="InputDiv">
+                        <input onChange={(e) => { this.setState({ OtherContact: e.target.value }) }}
+                          type="Text" className="form-control" placeholder="Other Contacts" />
+                      </div>
+
+                      <div className="formInput">
+                        <select onChange={(e) => { this.setState({ OptionChoose: e.target.value }) }} className="browser-default custom-select">
+                          <option>Choose your option</option>
+                          <option value="Writing">Writing</option>
+                          <option value="Legal">Legal</option>
+                          <option value="Finance">Finance</option>
+                          <option value="Policy">Policy</option>
+                          <option value="Adminstration">Adminstration</option>
+                          <option value="Information/PR">Information/PR</option>
+                          <option value="Social Media">Social Media</option>
+                          <option value="Security">Security</option>
+                          <option value="Constitution">Constitution</option>
+                          <option value="Youth">Youth</option>
+                          <option value="Gender">Gender</option>
+                          <option value="Entertainment">Entertainment</option>
+                          <option value="Journalism">Journalism</option>
+                          <option value="Research">Research</option>
+                          <option value="Health">Health</option>
+                          <option value="Transport">Transport</option>
+                          <option value="Humanitarinan">Humanitarinan</option>
+                          <option value="Housing">Housing</option>
+                          <option value="Policing">Policing</option>
+                          <option value="Strategy">Strategy</option>
+
+                        </select>
+
+                        <div className="text-center">
+                          <MDBBtn onClick={this.handleClick.bind(this)} color="danger" size="sm">Submit</MDBBtn>
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+
+              </MDBCol>
+            </MDBRow>
+          </Container>
+        </div>*/}
+
+
+        <div> 
           <img className="MainImage" src={require('./assests/Images/Main.png')} />
         </div>
-        <div className="MainContainer">
+        <div className="Form2Container">
 
+          <Container>
+            <p className="Heading2"><strong>Add Contact</strong></p>
+            <p style={{ color: '#fff', textAlign: "center" }} className="FromLeftSideHeading">This is the dummy text of the form</p>
+            <Card className="Form2Card">
+              <MDBRow>
+                <MDBCol xl="5">
+                  <img className="LeftImage" src={require('./assests/Images/formimage.jpg')} />
+                </MDBCol>
+                <MDBCol xl="7">
+
+                  <div>
+                    <h4 className="FromHeading"><strong>ADD CONTACT</strong></h4>
+                    <h4 className="FromHeading"><strong>{this.state.CommunicationCount}</strong></h4>
+                    <hr></hr>
+                    <h4 className="SecondformText"><strong>This will be the title of the form</strong></h4>
+                    <p className="SecondFont">To volunteer with Arise Zimbabwe, enter a few details for the campaign team to contact you.</p>
+
+                    <div>
+
+                      <div className="formInput">
+                        <input value={this.state.MobileNumber} onChange={(e) => { this.setState({ MobileNumber: e.target.value }) }}
+                          type="Text" className="form-control" placeholder="Enter Mobile Number" />
+                      </div>
+                      <div className="formInput">
+                        <input value={this.state.Region} onChange={(e) => { this.setState({ Region: e.target.value }) }}
+                          type="Text" className="form-control" placeholder="Region/E.G MANICALAND,MIDLANDS ETC " />
+                      </div>
+                      <div className="text-center">
+                        <MDBBtn onClick={this.Communicate.bind(this)} color="danger" size="sm">Submit</MDBBtn>
+
+                      </div>
+                    </div>
+                  </div>
+                </MDBCol>
+              </MDBRow>
+            </Card>
+          </Container>
+        </div>
+
+        <div className="Form3Container">
+          <p className="Heading"><strong>Report Incident</strong></p>
+          <Container>
+
+            <MDBRow MDBCol xl="6">
+              <MDBCol xl="6">
+
+                <div className="Form1TextContainer">
+                  <p style={{ color: '#fff' }} className="FromLeftSideHeading">Report an incident in this form</p>
+
+                  <p style={{ color: '#fff' }} className="TextForm">Enter the Mobile numbers of your friends & relatives so they can receive critical communication via SMS Broadcast during internet black out in Zimbabwe.</p>
+                  <p style={{ color: '#fff' }} className="TextForm">* INDICATES REQUIRED FIELD</p>
+                </div>
+              </MDBCol>
+              <MDBCol xl="4">
+                <Card style={{ height: 450 }}>
+
+                  <div className="Form1">
+                    <h4 className="FromHeading"><strong>REPORT INCIDENTS</strong></h4>
+                    <h4 className="FromHeading"><strong>{this.state.ReportCount}</strong></h4>
+                    <p className="formBottomText">Enter the Mobile numbers of your friends & relatives so they can receive critical communication via SMS Broadcast during internet black out in Zimbabwe.</p>
+
+                    <div>
+                      <div className="formInput">
+                        <input onChange={(e) => { this.setState({ AreaOfIncident: e.target.value }) }}
+                          type="email" className="form-control" placeholder="Area Of The Incident" />
+                      </div>
+
+                      <div className="formInput">
+                        <div className="input-group">
+                          <div className="input-group-prepend">
+                            <span className="input-group-text" id="basic-addon">
+                              <i className="fa fa-pencil prefix"></i>
+                            </span>
+                          </div>
+                          <textarea onChange={(e) => { this.setState({ Comment: e.target.value }) }}
+                            className="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                        </div>
+                      </div>
+
+                      <div className="text-center">
+                        <MDBBtn onClick={this.ReportIncident.bind(this)} color="danger" size="sm">Submit</MDBBtn>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </MDBCol>
+            </MDBRow>
+          </Container>
+        </div>
+
+        {/* 
           <div className="FormContainer">
 
 
             <MDBRow className="FormCard">
-              <MDBCol xl="4">
-                <div className="form-group">
-                  <div className="FormHeader">
-                    <h4 className="FromHeading"><strong>VOLUNTEER</strong></h4>
-                    <h4 className="FromHeading"><strong>{this.state.VolunteerCount}</strong></h4>
-                  </div>
+              <MDBCol xl="4" className="form-group">
+                <div>
+                  <h4 className="FromHeading"><strong>VOLUNTEER</strong></h4>
+                  <h4 className="FromHeading"><strong>{this.state.VolunteerCount}</strong></h4>
+
                   <hr className="Headingdivider" />
                   <div className="FormContent">
                     <p>To volunteer with Arise Zimbabwe, enter a few details for the campaign team to contact you.</p>
@@ -255,13 +520,10 @@ class App extends Component {
 
                 </div>
               </MDBCol>
-              <MDBCol xl="4">
-                <div className="form-group">
-                  <div className="FormHeader">
-                    <h4 className="FromHeading"><strong>COMMUNICATE</strong></h4>
-                    <h4 className="FromHeading"><strong>{this.state.CommunicationCount}</strong></h4>
-                  </div>
-
+              <MDBCol xl="4" className="form-group">
+                <div>
+                  <h4 className="FromHeading"><strong>Add contact</strong></h4>
+                  <h4 className="FromHeading"><strong>{this.state.CommunicationCount}</strong></h4>
                   <hr className="Headingdivider" />
                   <div className="FormContent">
                     <p>Enter the Mobile numbers of your friends & relatives so they can receive critical communication via SMS Broadcast during internet black out in Zimbabwe.</p>
@@ -283,12 +545,10 @@ class App extends Component {
                 </div>
               </MDBCol>
 
-              <MDBCol xl="4">
-                <div className="form-group">
-                  <div className="FormHeader">
-                    <h4 className="FromHeading"><strong>REPORT INCIDENTS</strong></h4>
-                    <h4 className="FromHeading"><strong>{this.state.ReportCount}</strong></h4>
-                  </div>
+              <MDBCol xl="4" className="form-group">
+                <div >
+                  <h4 className="FromHeading"><strong>REPORT INCIDENTS</strong></h4>
+                  <h4 className="FromHeading"><strong>{this.state.ReportCount}</strong></h4>
 
                   <hr className="Headingdivider" />
                   <div className="FormContent">
@@ -322,8 +582,7 @@ class App extends Component {
               </MDBCol>
 
             </MDBRow>
-          </div>
-        </div>
+          </div> */}
 
         {/* <hr style={{ margin: 20 }}></hr> */}
 
