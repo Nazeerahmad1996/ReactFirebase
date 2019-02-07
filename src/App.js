@@ -9,7 +9,7 @@ import * as firebase from 'firebase';
 import {
   MDBContainer, MDBNavbar, MDBNavbarBrand, Button, Card, CardBody, CardImage, CardTitle, CardText,
   MDBBtn, MDBRow, MDBCol, MDBIcon, Carousel, CarouselInner, CarouselItem, Container, Row, Col,
-  MDBAlert, Tooltip
+  MDBAlert, Tooltip, MDBCollapse
 } from 'mdbreact';
 import {
   BrowserRouter as Router,
@@ -42,7 +42,15 @@ class App extends Component {
       CommunicationCount: '',
       ReportCount: '',
       VolunteerCount: '',
+
+      collapseID: "",
     };
+  }
+
+  toggleCollapse = collapseID => () => {
+    this.setState(prevState => ({
+      collapseID: prevState.collapseID !== collapseID ? collapseID : ""
+    }));
   }
 
 
@@ -174,6 +182,8 @@ class App extends Component {
             </MDBNavbar>
           </header>
         </Router>
+
+
 
 
 
@@ -522,8 +532,8 @@ class App extends Component {
                 </Card>
               </MDBCol>
             </MDBRow>
+          </div>
         </div>
-      </div>
 
         {/* 
           <div className="FormContainer">
@@ -670,521 +680,992 @@ class App extends Component {
             </MDBRow>
           </div> */}
 
-    {/* <hr style={{ margin: 20 }}></hr> */ }
+        {/* <hr style={{ margin: 20 }}></hr> */}
 
 
-    <div className="MainContainer2">
-      <MDBContainer className="cards">
 
-        <MDBRow>
-          <MDBCol md="3" className="cardMargin">
-            <Card narrow className="CardBody">
-              <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
-              <CardBody cascade>
-                <CardTitle className="CardTitle">Harare Province</CardTitle>
-                <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
-                <MDBBtn color="amber">Join Now</MDBBtn>
-              </CardBody>
-            </Card>
-          </MDBCol>
-          <MDBCol md="3" className="cardMargin">
-            <Card narrow>
-              <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
-              <CardBody cascade>
-                <CardTitle className="CardTitle">Bulawayo Province</CardTitle>
-                <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
-                <MDBBtn color="amber">Join Now</MDBBtn>
-              </CardBody>
-            </Card>
-          </MDBCol>
-          <MDBCol md="3" className="cardMargin">
-            <Card narrow>
-              <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
-              <CardBody cascade>
-                <CardTitle className="CardTitle">Masvingo Province</CardTitle>
-                <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
-                <MDBBtn color="amber">Join Now</MDBBtn>
-              </CardBody>
-            </Card>
-          </MDBCol>
+        <div className="MainContainer2">
+          <MDBContainer className="cards">
 
-          <MDBCol md="3" className="cardMargin">
-            <Card narrow>
-              <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
-              <CardBody cascade>
-                <CardTitle className="CardTitle">Mashonaland Central</CardTitle>
-                <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
-                <MDBBtn color="amber">Join Now</MDBBtn>
-              </CardBody>
-            </Card>
-          </MDBCol>
-          <MDBCol md="3" className="cardMargin">
-            <Card narrow>
-              <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
-              <CardBody cascade>
-                <CardTitle className="CardTitle">Mashonaland East</CardTitle>
-                <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
-                <MDBBtn color="amber">Join Now</MDBBtn>
-              </CardBody>
-            </Card>
-          </MDBCol>
+            <MDBRow>
+              <MDBCol md="3" className="cardMargin" onClick={this.toggleCollapse("basicCollapse")}>
+                <Card narrow className="CardBody">
+                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
+                  <CardBody cascade>
+                    <CardTitle className="CardTitle">Harare Province</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <MDBBtn color="amber">Join Now</MDBBtn>
+                  </CardBody>
+                </Card>
+              </MDBCol>
 
-          <MDBCol md="3" className="cardMargin">
-            <Card narrow>
-              <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
-              <CardBody cascade>
-                <CardTitle className="CardTitle">Mashonaland West</CardTitle>
-                <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
-                <MDBBtn color="amber">Join Now</MDBBtn>
-              </CardBody>
-            </Card>
-          </MDBCol>
-
-          <MDBCol md="3" className="cardMargin">
-            <Card narrow>
-              <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
-              <CardBody cascade>
-                <CardTitle className="CardTitle">Manicaland Province</CardTitle>
-                <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
-                <MDBBtn color="amber">Join Now</MDBBtn>
-              </CardBody>
-            </Card>
-          </MDBCol>
-          <MDBCol md="3" className="cardMargin">
-            <Card narrow>
-              <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
-              <CardBody cascade>
-                <CardTitle className="CardTitle">Matebeleland North</CardTitle>
-                <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
-                <MDBBtn color="amber">Join Now</MDBBtn>
-              </CardBody>
-            </Card>
-          </MDBCol>
-          <MDBCol md="3" className="cardMargin">
-            <Card narrow>
-              <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
-              <CardBody cascade>
-                <CardTitle className="CardTitle">Matebeleland South</CardTitle>
-                <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
-                <MDBBtn color="amber">Join Now</MDBBtn>
-              </CardBody>
-            </Card>
-          </MDBCol>
-          <MDBCol md="3" className="cardMargin">
-            <Card narrow>
-              <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
-              <CardBody cascade>
-                <CardTitle className="CardTitle">Midlands Province</CardTitle>
-                <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
-                <MDBBtn color="amber">Join Now</MDBBtn>
-              </CardBody>
-            </Card>
-          </MDBCol>
-
-          <MDBCol md="6" className="cardMargin">
-            <Card narrow>
-              <TwitterTimelineEmbed
-                sourceType="profile"
-                screenName="saurabhnemade"
-                options={{ height: 400 }}
-              />
-            </Card>
-          </MDBCol>
-
-        </MDBRow>
-
-        <hr className="divider" />
-
-        <Button href="#">Diaspsora</Button>
-
-        <MDBRow>
-          <MDBCol md="3" className="cardMargin">
-            <Card narrow>
-              <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
-              <CardBody cascade>
-                <CardTitle className="CardTitle">UK & Europe</CardTitle>
-                <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
-                <MDBBtn color="amber">Join Now</MDBBtn>
-              </CardBody>
-            </Card>
-          </MDBCol>
-          <MDBCol md="3" className="cardMargin">
-            <Card narrow>
-              <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
-              <CardBody cascade>
-                <CardTitle className="CardTitle">SA & Southern  Africa</CardTitle>
-                <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
-                <MDBBtn color="amber">Join Now</MDBBtn>
-              </CardBody>
-            </Card>
-          </MDBCol>
-          <MDBCol md="3" className="cardMargin">
-            <Card narrow>
-              <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
-              <CardBody cascade>
-                <CardTitle className="CardTitle">Australia & New Zealand</CardTitle>
-                <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
-                <MDBBtn color="amber">Join Now</MDBBtn>
-              </CardBody>
-            </Card>
-          </MDBCol>
-          <MDBCol md="3" className="cardMargin">
-            <Card narrow>
-              <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
-              <CardBody cascade>
-                <CardTitle className="CardTitle">USA & Canada</CardTitle>
-                <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
-                <MDBBtn color="amber">Join Now</MDBBtn>
-              </CardBody>
-            </Card>
-          </MDBCol>
-
-        </MDBRow>
-
-
-      </MDBContainer>
-
-      <Container className="imageSliderContainers">
-        <Carousel activeItem={1} length={3} slide={true} showControls={true} showIndicators={true} multiItem={true} testimonial={true}>
-          <CarouselInner>
-            <MDBContainer>
-              <Row>
-                <CarouselItem itemId="1">
-                  <MDBRow>
-                    <MDBCol md="6" className="cardMargin">
-                      <Card className="imageSliderContainer">
-                        <CardImage
-                          top
-                          src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg"
-                          overlay="white-slight"
-                          hover
-                          waves
-                          alt="Card image cap"
-                        />
-                        <CardBody>
-                          <CardTitle>Card Title</CardTitle>
-                          <hr />
-                          <CardText>
-                            Some quick example text to build on the card title and make
-                            up the bulk of the card&apos;s content.
-              </CardText>
-                          <p className="featuredText">FEATURED</p>
-                        </CardBody>
-                      </Card>
-                    </MDBCol>
-                    <MDBCol md="6" className="cardMargin">
-                      <Card>
-                        <CardImage
-                          top
-                          src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg"
-                          overlay="white-slight"
-                          hover
-                          waves
-                          alt="Card image cap"
-                        />
-                        <CardBody>
-
-                          <CardTitle>Card Title</CardTitle>
-                          <hr />
-                          <CardText>
-                            Some quick example text to build on the card title and make
-                            up the bulk of the card&apos;s content.
-              </CardText>
-                          <p className="featuredText">FEATURED</p>
-
-                        </CardBody>
-                      </Card>
-                    </MDBCol>
-
-                  </MDBRow>
-                </CarouselItem>
-                <CarouselItem itemId="2">
-                  <MDBRow>
-                    <MDBCol md="4" className="cardMargin">
-                      <Card className="imageSliderContainer">
-                        <CardImage
-                          top
-                          src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg"
-                          overlay="white-slight"
-                          hover
-                          waves
-                          alt="Card image cap"
-                        />
-                        <CardBody>
-
-                          <CardTitle>Card Title</CardTitle>
-                          <hr />
-                          <CardText>
-                            Some quick example text to build on the card title and make
-                            up the bulk of the card&apos;s content.
-              </CardText>
-
-                        </CardBody>
-                      </Card>
-                    </MDBCol>
-                    <MDBCol md="4" className="cardMargin">
-                      <Card>
-                        <CardImage
-                          top
-                          src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg"
-                          overlay="white-slight"
-                          hover
-                          waves
-                          alt="Card image cap"
-                        />
-                        <CardBody>
-
-                          <CardTitle>Card Title</CardTitle>
-                          <hr />
-                          <CardText>
-                            Some quick example text to build on the card title and make
-                            up the bulk of the card&apos;s content.
-              </CardText>
-
-                        </CardBody>
-                      </Card>
-                    </MDBCol>
-
-                    <MDBCol md="4" className="cardMargin">
-                      <Card>
-                        <CardImage
-                          top
-                          src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg"
-                          overlay="white-slight"
-                          hover
-                          waves
-                          alt="Card image cap"
-                        />
-                        <CardBody>
-
-                          <CardTitle>Card Title</CardTitle>
-                          <hr />
-                          <CardText>
-                            Some quick example text to build on the card title and make
-                            up the bulk of the card&apos;s content.
-              </CardText>
-
-                        </CardBody>
-                      </Card>
-                    </MDBCol>
-
-                  </MDBRow>
-                </CarouselItem>
-                <CarouselItem itemId="3">
-                  <MDBRow>
-                    <MDBCol md="4" className="cardMargin">
-                      <Card className="imageSliderContainer">
-                        <CardImage
-                          top
-                          src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg"
-                          overlay="white-slight"
-                          hover
-                          waves
-                          alt="Card image cap"
-                        />
-                        <CardBody>
-
-                          <CardTitle>Card Title</CardTitle>
-                          <hr />
-                          <CardText>
-                            Some quick example text to build on the card title and make
-                            up the bulk of the card&apos;s content.
-              </CardText>
-
-                        </CardBody>
-                      </Card>
-                    </MDBCol>
-                    <MDBCol md="4" className="cardMargin">
-                      <Card>
-                        <CardImage
-                          top
-                          src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg"
-                          overlay="white-slight"
-                          hover
-                          waves
-                          alt="Card image cap"
-                        />
-                        <CardBody>
-
-                          <CardTitle>Card Title</CardTitle>
-                          <hr />
-                          <CardText>
-                            Some quick example text to build on the card title and make
-                            up the bulk of the card&apos;s content.
-              </CardText>
-
-                        </CardBody>
-                      </Card>
-                    </MDBCol>
-
-                    <MDBCol md="4" className="cardMargin">
-                      <Card>
-                        <CardImage
-                          top
-                          src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg"
-                          overlay="white-slight"
-                          hover
-                          waves
-                          alt="Card image cap"
-                        />
-                        <CardBody>
-
-                          <CardTitle>Card Title</CardTitle>
-
-                          <hr />
-                          <CardText>
-                            Some quick example text to build on the card title and make
-                            up the bulk of the card&apos;s content.
-              </CardText>
-
-                        </CardBody>
-                      </Card>
-                    </MDBCol>
-
-                  </MDBRow>
-                </CarouselItem>
-              </Row>
-            </MDBContainer>
-          </CarouselInner>
-        </Carousel>
-      </Container>
-
-
-      <div className="VideoSliderContainers">
-        <Container>
-          <Carousel activeItem={1} interval={200000} length={3} slide={true} showControls={true} showIndicators={true} multiItem={true} testimonial={true}>
-            <CarouselInner>
-              <MDBContainer>
-                <Row>
-                  <CarouselItem itemId="1">
+              <MDBCollapse style={{ width: '100%' }} id="basicCollapse" isOpen={this.state.collapseID}>
+                <div style={{ marginTop: 20, padding: 30 }}>
+                  <Card style={{ paddingTop: 25, paddingBottom: 25 }}>
+                    <p className="Heading"><strong>Harare</strong></p>
                     <MDBRow>
-                      <MDBCol md="6" className="cardMargin">
-                        <Card className="imageSliderContainer">
-                          <video className="video-fluid" autoPlay loop>
-                            <source src="https://mdbootstrap.com/img/video/Agua-natural.mp4" type="video/mp4" />
-                          </video>
-                          <CardBody>
-
-                            <CardTitle>Card Title</CardTitle>
-                            <hr />
-                            <CardText>
-                              Some quick example text to build on the card title and make
-                              up the bulk of the card&apos;s content.
-              </CardText>
-
-                          </CardBody>
-                        </Card>
+                      <MDBCol lg="4">
+                        <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
                       </MDBCol>
-                      <MDBCol md="6" className="cardMargin">
-                        <Card className="imageSliderContainer">
-                          <video className="video-fluid" autoPlay loop>
-                            <source src="https://mdbootstrap.com/img/video/Agua-natural.mp4" type="video/mp4" />
-                          </video>
-                          <CardBody>
+                      <MDBCol xs="4">
+                        <p style={{ textAlign: 'left',padding:10 }}>
+                          Budiriro <br />
+                          Chitungwiza North<br />
+                          Chitungwiza South<br />
+                          Epworth<br />
+                          Dzivarasekwa<br />
+                          Glen Norah<br />
+                          Glen View North<br />
+                          Glen View South<br />
+                          Harare Central<br />
+                          Harare East<br />
+                          Harare North<br />
+                          Harare South<br />
+                          Harare West<br />
+                          Hatfield<br />
+                          Highfield East<br />
 
-                            <CardTitle>Card Title</CardTitle>
-                            <hr />
-                            <CardText>
-                              Some quick example text to build on the card title and make
-                              up the bulk of the card&apos;s content.
-              </CardText>
+                        </p>
+                      </MDBCol>
+                      <MDBCol xs="4">
+                        <p style={{ textAlign: 'left' ,padding:10}}>
+                          Highfield West<br />
+                          Kambuzuma<br />
+                          Kuwadzana<br />
+                          Kuwadzana East<br />
+                          Mabvuku<br />
+                          Tafara<br />
+                          Mbare<br />
+                          Mt Pleasant<br />
+                          Mufakose<br />
+                          Southerton<br />
+                          St Mary’s<br />
+                          Sunningdale<br />
+                          Warren Park<br />
+                          Zengeza East<br />
+                          Zengeza West<br />
 
-                          </CardBody>
-                        </Card>
+                        </p>
                       </MDBCol>
 
                     </MDBRow>
-                  </CarouselItem>
+                  </Card>
+                </div>
+              </MDBCollapse>
 
-                  <CarouselItem itemId="2">
+
+
+              <MDBCol md="3" className="cardMargin" onClick={this.toggleCollapse("basicCollapse2")}>
+                <Card narrow>
+                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
+                  <CardBody cascade>
+                    <CardTitle className="CardTitle">Bulawayo Province</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <MDBBtn color="amber">Join Now</MDBBtn>
+                  </CardBody>
+                </Card>
+              </MDBCol>
+              <MDBCollapse style={{ width: '100%' }} id="basicCollapse2" isOpen={this.state.collapseID}>
+                <div style={{ marginTop: 20, padding: 30 }}>
+                  <Card style={{ paddingTop: 25, paddingBottom: 25 }}>
+                    <p className="Heading"><strong>Bulawayo</strong></p>
                     <MDBRow>
-                      <MDBCol md="6" className="cardMargin">
-                        <Card className="imageSliderContainer">
-                          <video className="video-fluid" autoPlay loop>
-                            <source src="https://mdbootstrap.com/img/video/Agua-natural.mp4" type="video/mp4" />
-                          </video>
-                          <CardBody>
-
-                            <CardTitle>Card Title</CardTitle>
-                            <hr />
-                            <CardText>
-                              Some quick example text to build on the card title and make
-                              up the bulk of the card&apos;s content.
-              </CardText>
-
-                          </CardBody>
-                        </Card>
+                      <MDBCol lg="4">
+                        <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
                       </MDBCol>
-                      <MDBCol md="6" className="cardMargin">
-                        <Card className="imageSliderContainer">
-                          <video className="video-fluid" autoPlay loop>
-                            <source src="https://mdbootstrap.com/img/video/Agua-natural.mp4" type="video/mp4" />
-                          </video>
-                          <CardBody>
+                      <MDBCol xs="4">
+                        <p style={{ textAlign: 'left',padding:10 }}>
+                          Bulawayo Central<br />
+                          Bulawayo East<br />
+                          Bulawayo South<br />
+                          Emakhandeni<br />
+                          Entumbane<br />
+                          Lobengula<br />
+                          Luveve<br />
+                          Magwegwe<br />
+                          Makokoba<br />
+                          Nketa<br />
+                          Nkulumane<br />
+                          Mpopoma<br />
+                          Pelandaba<br />
+                          Matshobana<br />
+                          Pumula<br />
 
-                            <CardTitle>Card Title</CardTitle>
-                            <hr />
-                            <CardText>
-                              Some quick example text to build on the card title and make
-                              up the bulk of the card&apos;s content.
-              </CardText>
 
-                          </CardBody>
-                        </Card>
+                        </p>
                       </MDBCol>
 
                     </MDBRow>
-                  </CarouselItem>
+                  </Card>
+                </div>
+              </MDBCollapse>
 
-                  <CarouselItem itemId="3">
+              <MDBCol md="3" className="cardMargin" onClick={this.toggleCollapse("basicCollapse3")}>
+                <Card narrow>
+                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
+                  <CardBody cascade>
+                    <CardTitle className="CardTitle">Masvingo Province</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <MDBBtn color="amber">Join Now</MDBBtn>
+                  </CardBody>
+                </Card>
+              </MDBCol>
+
+              <MDBCollapse style={{ width: '100%' }} id="basicCollapse3" isOpen={this.state.collapseID}>
+                <div style={{ marginTop: 20, padding: 30 }}>
+                  <Card style={{ paddingTop: 25, paddingBottom: 25 }}>
+                    <p className="Heading"><strong>Masvingo</strong></p>
                     <MDBRow>
-                      <MDBCol md="6" className="cardMargin">
-                        <Card className="imageSliderContainer">
-                          <video className="video-fluid" autoPlay loop>
-                            <source src="https://mdbootstrap.com/img/video/Agua-natural.mp4" type="video/mp4" />
-                          </video>
-                          <CardBody>
-
-                            <CardTitle>Card Title</CardTitle>
-                            <hr />
-                            <CardText>
-                              Some quick example text to build on the card title and make
-                              up the bulk of the card&apos;s content.
-              </CardText>
-
-                          </CardBody>
-                        </Card>
+                      <MDBCol lg="4">
+                        <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
                       </MDBCol>
-                      <MDBCol md="6" className="cardMargin">
-                        <Card className="imageSliderContainer">
-                          <video className="video-fluid" autoPlay loop>
-                            <source src="https://mdbootstrap.com/img/video/Agua-natural.mp4" type="video/mp4" />
-                          </video>
-                          <CardBody>
+                      <MDBCol xs="4">
+                        <p style={{ textAlign: 'left',padding:10}}>
+                          Bikita East<br />
+                          Bikita South<br />
+                          Bikita West<br />
+                          Chiredzi East<br />
+                          Chiredzi North<br />
+                          Chiredzi South<br />
+                          Chiredzi West<br />
+                          Chivi Central<br />
+                          Chivi North<br />
+                          Chivi South<br />
+                          Gutu Central<br />
+                          Gutu East<br />
+                          Gutu North<br />
+                          Gutu South<br />
+                          Gutu West<br />
 
-                            <CardTitle>Card Title</CardTitle>
-                            <hr />
-                            <CardText>
-                              Some quick example text to build on the card title and make
-                              up the bulk of the card&apos;s content.
-              </CardText>
 
-                          </CardBody>
-                        </Card>
+
+                        </p>
+                      </MDBCol>
+                      <MDBCol xs="4">
+                        <p style={{ textAlign: 'left',padding:10 }}>
+                          Masvingo Central<br />
+                          Masvingo North<br />
+                          Masvingo South<br />
+                          Masvingo Urban<br />
+                          Masvingo West<br />
+                          Mwenezi East<br />
+                          Mwenezi West<br />
+                          Zaka Central<br />
+                          Zaka East<br />
+                          Zaka North<br />
+                          Zaka West<br />
+
+                        </p>
                       </MDBCol>
 
                     </MDBRow>
-                  </CarouselItem>
+                  </Card>
+                </div>
+              </MDBCollapse>
 
 
-                </Row>
-              </MDBContainer>
-            </CarouselInner>
-          </Carousel>
-        </Container>
+              <MDBCol md="3" className="cardMargin" onClick={this.toggleCollapse("basicCollapse4")}>
+                <Card narrow>
+                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
+                  <CardBody cascade>
+                    <CardTitle className="CardTitle">Mashonaland Central</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <MDBBtn color="amber">Join Now</MDBBtn>
+                  </CardBody>
+                </Card>
+              </MDBCol>
 
-      </div>
-    </div>
+              <MDBCollapse style={{ width: '100%' }} id="basicCollapse4" isOpen={this.state.collapseID}>
+                <div style={{ marginTop: 20, padding: 30 }}>
+                  <Card style={{ paddingTop: 25, paddingBottom: 25 }}>
+                    <p className="Heading"><strong>Mashonaland Central</strong></p>
+                    <MDBRow>
+                      <MDBCol lg="4">
+                        <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
+                      </MDBCol>
+                      <MDBCol xs="4">
+                        <p style={{ textAlign: 'left' ,padding:10}}>
+                          Bindura North<br />
+                          Bindura South<br />
+                          Guruve North<br />
+                          Guruve North<br />
+                          Guruve South<br />
+                          Mazowe Central<br />
+                          Mazowe North<br />
+                          Mazowe South<br />
+                          Mazowe West<br />
+                          Mbire<br />
+                          Mt. Darwin East<br />
+                          Mt. Darwin North<br />
+                          Mt. Darwin South<br />
+                          Mt. Darwin West<br />
+                          Muzarabani North<br />
+
+
+
+                        </p>
+                      </MDBCol>
+                      <MDBCol xs="4">
+                        <p style={{ textAlign: 'left',padding:10 }}>
+                          Muzarabani South<br />
+                          Rushinga<br />
+                          Shamva North<br />
+                          Shamva South<br />
+                          Rushinga<br />
+                          Shamva North<br />
+                          Shamva South<br />
+                        </p>
+                      </MDBCol>
+
+                    </MDBRow>
+                  </Card>
+                </div>
+              </MDBCollapse>
+
+              <MDBCol md="3" className="cardMargin" onClick={this.toggleCollapse("basicCollapse5")}>
+                <Card narrow>
+                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
+                  <CardBody cascade>
+                    <CardTitle className="CardTitle">Mashonaland East</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <MDBBtn color="amber">Join Now</MDBBtn>
+                  </CardBody>
+                </Card>
+              </MDBCol>
+
+              <MDBCollapse style={{ width: '100%' }} id="basicCollapse5" isOpen={this.state.collapseID}>
+                <div style={{ marginTop: 20, padding: 30 }}>
+                  <Card style={{ paddingTop: 25, paddingBottom: 25 }}>
+                    <p className="Heading"><strong>Mashonaland East</strong></p>
+                    <MDBRow>
+                      <MDBCol lg="4">
+                        <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
+                      </MDBCol>
+                      <MDBCol xs="4">
+                        <p style={{ textAlign: 'left',padding:10 }}>
+                          Chikomba Central<br />
+                          Chikomba East<br />
+                          Chikomba West<br />
+                          Goromonzi North<br />
+                          Goromonzi South<br />
+                          Goromonzi West<br />
+                          Marondera Central<br />
+                          Marondera East<br />
+                          Marondera West<br />
+                          Murehwa North<br />
+                          Murehwa South<br />
+                          Murehwa West<br />
+                          Mutoko East<br />
+                          Mutoko North<br />
+
+
+
+                        </p>
+                      </MDBCol>
+                      <MDBCol xs="4">
+                        <p style={{ textAlign: 'left',padding:10 }}>
+                          Mutoko South<br />
+                          Mutoko South<br />
+                          Mudzi North<br />
+                          Mudzi South<br />
+                          Mudzi West<br />
+                          Seke<br />
+                          Maramba-Pfungwe<br />
+                          Wedza North<br />
+                          Wedza South<br />
+                          Uzumba<br />
+
+                        </p>
+                      </MDBCol>
+
+                    </MDBRow>
+                  </Card>
+                </div>
+              </MDBCollapse>
+
+
+              <MDBCol md="3" className="cardMargin" onClick={this.toggleCollapse("basicCollapse6")}>
+                <Card narrow>
+                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
+                  <CardBody cascade>
+                    <CardTitle className="CardTitle">Mashonaland West</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <MDBBtn color="amber">Join Now</MDBBtn>
+                  </CardBody>
+                </Card>
+              </MDBCol>
+
+              <MDBCollapse style={{ width: '100%' }} id="basicCollapse6" isOpen={this.state.collapseID}>
+                <div style={{ marginTop: 20, padding: 30 }}>
+                  <Card style={{ paddingTop: 25, paddingBottom: 25 }}>
+                    <p className="Heading"><strong>Mashonaland West</strong></p>
+                    <MDBRow>
+                      <MDBCol lg="4">
+                        <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
+                      </MDBCol>
+                      <MDBCol xs="4">
+                        <p style={{ textAlign: 'left',padding:10 }}>
+                          Chakari<br />
+                          Chegutu East<br />
+                          Chegutu West<br />
+                          Chinhyoyi<br />
+                          Hurungwe Central<br />
+                          Hurungwe East<br />
+                          Hurungwe North<br />
+                          Hurungwe West<br />
+                          Kadoma Central<br />
+                          Kariba<br />
+                          Magunje<br />
+                          Makonde<br />
+                          Mhangura<br />
+                          Mhondoro-Mubaira<br />
+                          Mhondoro-Ngezi<br />
+                          Muzvezve<br />
+
+
+
+                        </p>
+                      </MDBCol>
+                      <MDBCol xs="4">
+                        <p style={{ textAlign: 'left',padding:10 }}>
+                          Norton<br />
+                          Sanyati<br />
+                          Zvimba East<br />
+                          Zvimba North<br />
+                          Zvimba South<br />
+                          Zvimba West<br />
+
+                        </p>
+                      </MDBCol>
+
+                    </MDBRow>
+                  </Card>
+                </div>
+              </MDBCollapse>
+
+
+              <MDBCol md="3" className="cardMargin" onClick={this.toggleCollapse("basicCollapse7")}>
+                <Card narrow>
+                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
+                  <CardBody cascade>
+                    <CardTitle className="CardTitle">Manicaland Province</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <MDBBtn color="amber">Join Now</MDBBtn>
+                  </CardBody>
+                </Card>
+              </MDBCol>
+
+              <MDBCollapse style={{ width: '100%' }} id="basicCollapse7" isOpen={this.state.collapseID}>
+                <div style={{ marginTop: 20, padding: 30 }}>
+                  <Card style={{ paddingTop: 25, paddingBottom: 25 }}>
+                    <p className="Heading"><strong>Manicaland Province</strong></p>
+                    <MDBRow>
+                      <MDBCol lg="4">
+                        <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
+                      </MDBCol>
+                      <MDBCol xs="4">
+                        <p style={{ textAlign: 'left',padding:10 }}>
+                          Buhera Central<br />
+                          Buhera North<br />
+                          Buhera South<br />
+                          Buhera West<br />
+                          Chimanimani East<br />
+                          Chimanimani West<br />
+                          Chipinge Central<br />
+                          Chipinge East<br />
+                          Chipinge South<br />
+                          Chipinge West<br />
+                          Dangamvura<br />
+                          Chikanga<br />
+                          Headlands<br />
+                          Makoni Central<br />
+                          Makoni North<br />
+
+
+
+
+
+                        </p>
+                      </MDBCol>
+                      <MDBCol xs="4">
+                        <p style={{ textAlign: 'left',padding:10 }}>
+                          Makoni South<br />
+                          Makoni West<br />
+                          Musikavanhu<br />
+                          Mutare Central<br />
+                          Mutare North<br />
+                          Mutare South<br />
+                          Mutare West<br />
+                          Mutasa Central<br />
+                          Mutasa North<br />
+                          Mutasa South<br />
+                          Nyanga North<br />
+                          Nyanga South<br />
+
+
+                        </p>
+                      </MDBCol>
+
+                    </MDBRow>
+                  </Card>
+                </div>
+              </MDBCollapse>
+
+              <MDBCol md="3" className="cardMargin" onClick={this.toggleCollapse("basicCollapse8")}>
+                <Card narrow>
+                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
+                  <CardBody cascade>
+                    <CardTitle className="CardTitle">Matebeleland North</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <MDBBtn color="amber">Join Now</MDBBtn>
+                  </CardBody>
+                </Card>
+              </MDBCol>
+
+              <MDBCollapse style={{ width: '100%' }} id="basicCollapse8" isOpen={this.state.collapseID}>
+                <div style={{ marginTop: 20, padding: 30 }}>
+                  <Card style={{ paddingTop: 25, paddingBottom: 25 }}>
+                    <p className="Heading"><strong>Matebeleland North</strong></p>
+                    <MDBRow>
+                      <MDBCol lg="4">
+                        <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
+                      </MDBCol>
+                      <MDBCol xs="4">
+                        <p style={{ textAlign: 'left',padding:10 }}>
+                          Binga North<br />
+                          Binga South<br />
+                          Bubi<br />
+                          Lupane East<br />
+                          Lupane West<br />
+                          Nkayi South<br />
+                          Nkayi North<br />
+                          Tsholotsho North<br />
+                          Tsholotsho South<br />
+                          Hwange East<br />
+                          Hwange Central<br />
+                          Hwange West<br />
+                          Umguza<br />
+                        </p>
+                      </MDBCol>
+
+                    </MDBRow>
+                  </Card>
+                </div>
+              </MDBCollapse>
+
+              <MDBCol md="3" className="cardMargin" onClick={this.toggleCollapse("basicCollapse9")}>
+                <Card narrow>
+                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
+                  <CardBody cascade>
+                    <CardTitle className="CardTitle">Matebeleland South</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <MDBBtn color="amber">Join Now</MDBBtn>
+                  </CardBody>
+                </Card>
+              </MDBCol>
+
+              <MDBCollapse style={{ width: '100%' }} id="basicCollapse9" isOpen={this.state.collapseID}>
+                <div style={{ marginTop: 20, padding: 30 }}>
+                  <Card style={{ paddingTop: 25, paddingBottom: 25 }}>
+                    <p className="Heading"><strong>Matebeleland South</strong></p>
+                    <MDBRow>
+                      <MDBCol lg="4">
+                        <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
+                      </MDBCol>
+                      <MDBCol xs="4">
+                        <p style={{ textAlign: 'left',padding:10 }}>
+                          Beitbridge East<br />
+                          Beitbridge West<br />
+                          Bulilima East<br />
+                          Bulilima West<br />
+                          Gwanda North<br />
+                          Gwanda Central<br />
+                          Gwanda South<br />
+                          Insiza North<br />
+                          Insiza South<br />
+                          Mangwe<br />
+                          Matobo North<br />
+                          Matobo South<br />
+                          Umzingwane<br />
+
+                        </p>
+                      </MDBCol>
+
+                    </MDBRow>
+                  </Card>
+                </div>
+              </MDBCollapse>
+
+              <MDBCol md="3" className="cardMargin" onClick={this.toggleCollapse("basicCollapse10")}>
+                <Card narrow>
+                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
+                  <CardBody cascade>
+                    <CardTitle className="CardTitle">Midlands Province</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <MDBBtn color="amber">Join Now</MDBBtn>
+                  </CardBody>
+                </Card>
+              </MDBCol>
+
+              <MDBCollapse style={{ width: '100%' }} id="basicCollapse10" isOpen={this.state.collapseID}>
+                <div style={{ marginTop: 20, padding: 30 }}>
+                  <Card style={{ paddingTop: 25, paddingBottom: 25 }}>
+                    <p className="Heading"><strong>Midlands Province</strong></p>
+                    <MDBRow>
+                      <MDBCol lg="4">
+                        <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
+                      </MDBCol>
+                      <MDBCol xs="4">
+                        <p style={{ textAlign: 'left',padding:10 }}>
+                          Chirumhanzu<br />
+                          Chirumhanzu-Zibagwe<br />
+                          Chiwundura<br />
+                          Gokwe<br />
+                          Gokwe-Chireya<br />
+                          Gokwe-Gumunyu<br />
+                          Gokwe-Kabuyuni<br />
+                          Gokwe-Kana<br />
+                          Gokwe-Mapfungautsi<br />
+                          Gokwe-Nembudziya<br />
+                          Gokwe-Sengwa<br />
+                          Gokwe-Sasame<br />
+                          Gweru Urban<br />
+                          Kwekwe Central<br />
+                          Mberengwa East<br />
+
+
+
+                        </p>
+                      </MDBCol>
+                      <MDBCol xs="4">
+                        <p style={{ textAlign: 'left',padding:10 }}>
+                          Mberengwa North<br />
+                          Mbrerengwa South<br />
+                          Mberengwa West<br />
+                          Mbizo<br />
+                          Mkoba<br />
+                          Redcliff<br />
+                          Shurugwi North<br />
+                          Shurugwi South<br />
+                          Silobela<br />
+                          Vungu<br />
+                          Zhombe<br />
+                          Zvishavane-Ngezi<br />
+                          Zvishavane-Runde<br />
+
+                        </p>
+                      </MDBCol>
+
+                    </MDBRow>
+                  </Card>
+                </div>
+              </MDBCollapse>
+
+
+              <MDBCol md="6" className="cardMargin">
+                <Card narrow>
+                  <TwitterTimelineEmbed
+                    sourceType="profile"
+                    screenName="ZimbabweArise"
+                    options={{ height: 400 }}
+                  />
+                </Card>
+              </MDBCol>
+
+            </MDBRow>
+
+            <hr className="divider" />
+
+            <Button href="#">Diaspsora</Button>
+
+            <MDBRow>
+              <MDBCol md="3" className="cardMargin">
+                <Card narrow>
+                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
+                  <CardBody cascade>
+                    <CardTitle className="CardTitle">UK & Europe</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <MDBBtn color="amber">Join Now</MDBBtn>
+                  </CardBody>
+                </Card>
+              </MDBCol>
+              <MDBCol md="3" className="cardMargin">
+                <Card narrow>
+                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
+                  <CardBody cascade>
+                    <CardTitle className="CardTitle">SA & Southern  Africa</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <MDBBtn color="amber">Join Now</MDBBtn>
+                  </CardBody>
+                </Card>
+              </MDBCol>
+              <MDBCol md="3" className="cardMargin">
+                <Card narrow>
+                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
+                  <CardBody cascade>
+                    <CardTitle className="CardTitle">Australia & New Zealand</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <MDBBtn color="amber">Join Now</MDBBtn>
+                  </CardBody>
+                </Card>
+              </MDBCol>
+              <MDBCol md="3" className="cardMargin">
+                <Card narrow>
+                  <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
+                  <CardBody cascade>
+                    <CardTitle className="CardTitle">USA & Canada</CardTitle>
+                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <MDBBtn color="amber">Join Now</MDBBtn>
+                  </CardBody>
+                </Card>
+              </MDBCol>
+
+            </MDBRow>
+
+
+          </MDBContainer>
+
+          <Container className="imageSliderContainers">
+            <Carousel activeItem={1} length={3} slide={true} showControls={true} showIndicators={true} multiItem={true} testimonial={true}>
+              <CarouselInner>
+                <MDBContainer>
+                  <Row>
+                    <CarouselItem itemId="1">
+                      <MDBRow>
+                        <MDBCol md="6" className="cardMargin">
+                          <Card className="imageSliderContainer">
+                            <CardImage
+                              top
+                              src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg"
+                              overlay="white-slight"
+                              hover
+                              waves
+                              alt="Card image cap"
+                            />
+                            <CardBody>
+                              <CardTitle>Card Title</CardTitle>
+                              <hr />
+                              <CardText>
+                                Some quick example text to build on the card title and make
+                                up the bulk of the card&apos;s content.
+              </CardText>
+                              <p className="featuredText">FEATURED</p>
+                            </CardBody>
+                          </Card>
+                        </MDBCol>
+                        <MDBCol md="6" className="cardMargin">
+                          <Card>
+                            <CardImage
+                              top
+                              src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg"
+                              overlay="white-slight"
+                              hover
+                              waves
+                              alt="Card image cap"
+                            />
+                            <CardBody>
+
+                              <CardTitle>Card Title</CardTitle>
+                              <hr />
+                              <CardText>
+                                Some quick example text to build on the card title and make
+                                up the bulk of the card&apos;s content.
+              </CardText>
+                              <p className="featuredText">FEATURED</p>
+
+                            </CardBody>
+                          </Card>
+                        </MDBCol>
+
+                      </MDBRow>
+                    </CarouselItem>
+                    <CarouselItem itemId="2">
+                      <MDBRow>
+                        <MDBCol md="4" className="cardMargin">
+                          <Card className="imageSliderContainer">
+                            <CardImage
+                              top
+                              src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg"
+                              overlay="white-slight"
+                              hover
+                              waves
+                              alt="Card image cap"
+                            />
+                            <CardBody>
+
+                              <CardTitle>Card Title</CardTitle>
+                              <hr />
+                              <CardText>
+                                Some quick example text to build on the card title and make
+                                up the bulk of the card&apos;s content.
+              </CardText>
+
+                            </CardBody>
+                          </Card>
+                        </MDBCol>
+                        <MDBCol md="4" className="cardMargin">
+                          <Card>
+                            <CardImage
+                              top
+                              src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg"
+                              overlay="white-slight"
+                              hover
+                              waves
+                              alt="Card image cap"
+                            />
+                            <CardBody>
+
+                              <CardTitle>Card Title</CardTitle>
+                              <hr />
+                              <CardText>
+                                Some quick example text to build on the card title and make
+                                up the bulk of the card&apos;s content.
+              </CardText>
+
+                            </CardBody>
+                          </Card>
+                        </MDBCol>
+
+                        <MDBCol md="4" className="cardMargin">
+                          <Card>
+                            <CardImage
+                              top
+                              src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg"
+                              overlay="white-slight"
+                              hover
+                              waves
+                              alt="Card image cap"
+                            />
+                            <CardBody>
+
+                              <CardTitle>Card Title</CardTitle>
+                              <hr />
+                              <CardText>
+                                Some quick example text to build on the card title and make
+                                up the bulk of the card&apos;s content.
+              </CardText>
+
+                            </CardBody>
+                          </Card>
+                        </MDBCol>
+
+                      </MDBRow>
+                    </CarouselItem>
+                    <CarouselItem itemId="3">
+                      <MDBRow>
+                        <MDBCol md="4" className="cardMargin">
+                          <Card className="imageSliderContainer">
+                            <CardImage
+                              top
+                              src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg"
+                              overlay="white-slight"
+                              hover
+                              waves
+                              alt="Card image cap"
+                            />
+                            <CardBody>
+
+                              <CardTitle>Card Title</CardTitle>
+                              <hr />
+                              <CardText>
+                                Some quick example text to build on the card title and make
+                                up the bulk of the card&apos;s content.
+              </CardText>
+
+                            </CardBody>
+                          </Card>
+                        </MDBCol>
+                        <MDBCol md="4" className="cardMargin">
+                          <Card>
+                            <CardImage
+                              top
+                              src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg"
+                              overlay="white-slight"
+                              hover
+                              waves
+                              alt="Card image cap"
+                            />
+                            <CardBody>
+
+                              <CardTitle>Card Title</CardTitle>
+                              <hr />
+                              <CardText>
+                                Some quick example text to build on the card title and make
+                                up the bulk of the card&apos;s content.
+              </CardText>
+
+                            </CardBody>
+                          </Card>
+                        </MDBCol>
+
+                        <MDBCol md="4" className="cardMargin">
+                          <Card>
+                            <CardImage
+                              top
+                              src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg"
+                              overlay="white-slight"
+                              hover
+                              waves
+                              alt="Card image cap"
+                            />
+                            <CardBody>
+
+                              <CardTitle>Card Title</CardTitle>
+
+                              <hr />
+                              <CardText>
+                                Some quick example text to build on the card title and make
+                                up the bulk of the card&apos;s content.
+              </CardText>
+
+                            </CardBody>
+                          </Card>
+                        </MDBCol>
+
+                      </MDBRow>
+                    </CarouselItem>
+                  </Row>
+                </MDBContainer>
+              </CarouselInner>
+            </Carousel>
+          </Container>
+
+
+          <div className="VideoSliderContainers">
+            <Container>
+              <Carousel activeItem={1} interval={200000} length={3} slide={true} showControls={true} showIndicators={true} multiItem={true} testimonial={true}>
+                <CarouselInner>
+                  <MDBContainer>
+                    <Row>
+                      <CarouselItem itemId="1">
+                        <MDBRow>
+                          <MDBCol md="6" className="cardMargin">
+                            <Card className="imageSliderContainer">
+                              <video className="video-fluid" autoPlay loop>
+                                <source src="https://mdbootstrap.com/img/video/Agua-natural.mp4" type="video/mp4" />
+                              </video>
+                              <CardBody>
+
+                                <CardTitle>Card Title</CardTitle>
+                                <hr />
+                                <CardText>
+                                  Some quick example text to build on the card title and make
+                                  up the bulk of the card&apos;s content.
+              </CardText>
+
+                              </CardBody>
+                            </Card>
+                          </MDBCol>
+                          <MDBCol md="6" className="cardMargin">
+                            <Card className="imageSliderContainer">
+                              <video className="video-fluid" autoPlay loop>
+                                <source src="https://mdbootstrap.com/img/video/Agua-natural.mp4" type="video/mp4" />
+                              </video>
+                              <CardBody>
+
+                                <CardTitle>Card Title</CardTitle>
+                                <hr />
+                                <CardText>
+                                  Some quick example text to build on the card title and make
+                                  up the bulk of the card&apos;s content.
+              </CardText>
+
+                              </CardBody>
+                            </Card>
+                          </MDBCol>
+
+                        </MDBRow>
+                      </CarouselItem>
+
+                      <CarouselItem itemId="2">
+                        <MDBRow>
+                          <MDBCol md="6" className="cardMargin">
+                            <Card className="imageSliderContainer">
+                              <video className="video-fluid" autoPlay loop>
+                                <source src="https://mdbootstrap.com/img/video/Agua-natural.mp4" type="video/mp4" />
+                              </video>
+                              <CardBody>
+
+                                <CardTitle>Card Title</CardTitle>
+                                <hr />
+                                <CardText>
+                                  Some quick example text to build on the card title and make
+                                  up the bulk of the card&apos;s content.
+              </CardText>
+
+                              </CardBody>
+                            </Card>
+                          </MDBCol>
+                          <MDBCol md="6" className="cardMargin">
+                            <Card className="imageSliderContainer">
+                              <video className="video-fluid" autoPlay loop>
+                                <source src="https://mdbootstrap.com/img/video/Agua-natural.mp4" type="video/mp4" />
+                              </video>
+                              <CardBody>
+
+                                <CardTitle>Card Title</CardTitle>
+                                <hr />
+                                <CardText>
+                                  Some quick example text to build on the card title and make
+                                  up the bulk of the card&apos;s content.
+              </CardText>
+
+                              </CardBody>
+                            </Card>
+                          </MDBCol>
+
+                        </MDBRow>
+                      </CarouselItem>
+
+                      <CarouselItem itemId="3">
+                        <MDBRow>
+                          <MDBCol md="6" className="cardMargin">
+                            <Card className="imageSliderContainer">
+                              <video className="video-fluid" autoPlay loop>
+                                <source src="https://mdbootstrap.com/img/video/Agua-natural.mp4" type="video/mp4" />
+                              </video>
+                              <CardBody>
+
+                                <CardTitle>Card Title</CardTitle>
+                                <hr />
+                                <CardText>
+                                  Some quick example text to build on the card title and make
+                                  up the bulk of the card&apos;s content.
+              </CardText>
+
+                              </CardBody>
+                            </Card>
+                          </MDBCol>
+                          <MDBCol md="6" className="cardMargin">
+                            <Card className="imageSliderContainer">
+                              <video className="video-fluid" autoPlay loop>
+                                <source src="https://mdbootstrap.com/img/video/Agua-natural.mp4" type="video/mp4" />
+                              </video>
+                              <CardBody>
+
+                                <CardTitle>Card Title</CardTitle>
+                                <hr />
+                                <CardText>
+                                  Some quick example text to build on the card title and make
+                                  up the bulk of the card&apos;s content.
+              </CardText>
+
+                              </CardBody>
+                            </Card>
+                          </MDBCol>
+
+                        </MDBRow>
+                      </CarouselItem>
+
+
+                    </Row>
+                  </MDBContainer>
+                </CarouselInner>
+              </Carousel>
+            </Container>
+
+          </div>
+        </div>
       </div >
     );
   }
