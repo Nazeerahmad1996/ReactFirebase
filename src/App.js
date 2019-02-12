@@ -357,6 +357,9 @@ class App extends Component {
         <div>
           <img className="MainImage" src={require('./assests//Images//background6.jpg')} />
         </div>
+        {/* <div>
+          <img style={{width:'100%',height:'auto'}} src={require('./assests//Images//arise2.jpg')} />
+        </div> */}
         {/* <div className="Form2Container">
 
           <Container>
@@ -406,7 +409,7 @@ class App extends Component {
               <MDBCol lg="3">
 
 
-                <Card style={{ height: 470, marginTop: 5 }}>
+                <Card style={{ height: 435, marginTop: 5 }}>
                   <div className="Form1">
                     <h4 className="FromHeading"><strong>VOLUNTEER</strong></h4>
                     <h4 className="FromHeading"><strong>{this.state.VolunteerCount}</strong></h4>
@@ -474,7 +477,7 @@ class App extends Component {
               </MDBCol>
               <MDBCol lg="3">
 
-                <Card style={{ height: 470, marginTop: 5 }}>
+                <Card style={{ height: 435, marginTop: 5 }}>
                   <div className="Form1">
                     <h4 className="FromHeading"><strong>ADD CONTACT</strong></h4>
                     <h4 className="FromHeading"><strong>{this.state.CommunicationCount}</strong></h4>
@@ -497,9 +500,48 @@ class App extends Component {
                     </div>
                   </div>
                 </Card>
+
+                <Card style={{ height: 375, marginTop: 5 }}>
+                  <div className="Form1">
+                    <h4 className="FromHeading"><strong>CONTACT YOU MP OR MEP</strong></h4>
+                    {/* <h4 className="FromHeading"><strong>{this.state.CommunicationCount}</strong></h4> */}
+                    {/* <p className="formBottomText">To volunteer with Arise Zimbabwe, enter a few details for the campaign team to contact you.</p> */}
+
+                    <div>
+
+                      <div className="formInput">
+                        <input value={this.state.MobileNumber} onChange={(e) => { this.setState({ MobileNumber: e.target.value }) }}
+                          type="Text" className="form-control" placeholder="Enter Post Code" />
+                      </div>
+                      <div className="formInput">
+                        <div className="input-group">
+                          <div className="input-group-prepend">
+                            <span className="input-group-text" id="basic-addon">
+                              <i className="fa fa-pencil prefix"></i>
+                            </span>
+                          </div>
+                          <textarea onChange={(e) => { this.setState({ Comment: e.target.value }) }}
+                            className="form-control" placeholder="Message" id="exampleFormControlTextarea1" rows="5"></textarea>
+                        </div>
+                      </div>
+                      <div className="formInput">
+                        <input value={this.state.Region} onChange={(e) => { this.setState({ Region: e.target.value }) }}
+                          type="Text" className="form-control" placeholder="First Name" />
+                      </div>
+                      <div className="formInput">
+                        <input value={this.state.Region} onChange={(e) => { this.setState({ Region: e.target.value }) }}
+                          type="Text" className="form-control" placeholder="Last Name" />
+                      </div>
+                      <div className="text-center">
+                        <MDBBtn color="danger" size="sm">Submit</MDBBtn>
+
+                      </div>
+                    </div>
+                  </div>
+                </Card>
               </MDBCol>
               <MDBCol lg="3">
-                <Card style={{ height: 470, marginTop: 5 }}>
+                <Card style={{ height: 435, marginTop: 5 }}>
 
                   <div className="Form1">
                     <h4 className="FromHeading"><strong>REPORT INCIDENTS</strong></h4>
@@ -708,7 +750,7 @@ class App extends Component {
                         <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
                       </MDBCol>
                       <MDBCol xs="4">
-                        <p style={{ textAlign: 'left',padding:10 }}>
+                        <p style={{ textAlign: 'left', padding: 10 }}>
                           Budiriro <br />
                           Chitungwiza North<br />
                           Chitungwiza South<br />
@@ -728,7 +770,7 @@ class App extends Component {
                         </p>
                       </MDBCol>
                       <MDBCol xs="4">
-                        <p style={{ textAlign: 'left' ,padding:10}}>
+                        <p style={{ textAlign: 'left', padding: 10 }}>
                           Highfield West<br />
                           Kambuzuma<br />
                           Kuwadzana<br />
@@ -774,7 +816,7 @@ class App extends Component {
                         <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
                       </MDBCol>
                       <MDBCol xs="4">
-                        <p style={{ textAlign: 'left',padding:10 }}>
+                        <p style={{ textAlign: 'left', padding: 10 }}>
                           Bulawayo Central<br />
                           Bulawayo East<br />
                           Bulawayo South<br />
@@ -820,7 +862,7 @@ class App extends Component {
                         <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
                       </MDBCol>
                       <MDBCol xs="4">
-                        <p style={{ textAlign: 'left',padding:10}}>
+                        <p style={{ textAlign: 'left', padding: 10 }}>
                           Bikita East<br />
                           Bikita South<br />
                           Bikita West<br />
@@ -842,7 +884,7 @@ class App extends Component {
                         </p>
                       </MDBCol>
                       <MDBCol xs="4">
-                        <p style={{ textAlign: 'left',padding:10 }}>
+                        <p style={{ textAlign: 'left', padding: 10 }}>
                           Masvingo Central<br />
                           Masvingo North<br />
                           Masvingo South<br />
@@ -884,7 +926,7 @@ class App extends Component {
                         <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
                       </MDBCol>
                       <MDBCol xs="4">
-                        <p style={{ textAlign: 'left' ,padding:10}}>
+                        <p style={{ textAlign: 'left', padding: 10 }}>
                           Bindura North<br />
                           Bindura South<br />
                           Guruve North<br />
@@ -906,7 +948,7 @@ class App extends Component {
                         </p>
                       </MDBCol>
                       <MDBCol xs="4">
-                        <p style={{ textAlign: 'left',padding:10 }}>
+                        <p style={{ textAlign: 'left', padding: 10 }}>
                           Muzarabani South<br />
                           Rushinga<br />
                           Shamva North<br />
@@ -942,7 +984,7 @@ class App extends Component {
                         <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
                       </MDBCol>
                       <MDBCol xs="4">
-                        <p style={{ textAlign: 'left',padding:10 }}>
+                        <p style={{ textAlign: 'left', padding: 10 }}>
                           Chikomba Central<br />
                           Chikomba East<br />
                           Chikomba West<br />
@@ -963,7 +1005,7 @@ class App extends Component {
                         </p>
                       </MDBCol>
                       <MDBCol xs="4">
-                        <p style={{ textAlign: 'left',padding:10 }}>
+                        <p style={{ textAlign: 'left', padding: 10 }}>
                           Mutoko South<br />
                           Mutoko South<br />
                           Mudzi North<br />
@@ -1004,7 +1046,7 @@ class App extends Component {
                         <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
                       </MDBCol>
                       <MDBCol xs="4">
-                        <p style={{ textAlign: 'left',padding:10 }}>
+                        <p style={{ textAlign: 'left', padding: 10 }}>
                           Chakari<br />
                           Chegutu East<br />
                           Chegutu West<br />
@@ -1027,7 +1069,7 @@ class App extends Component {
                         </p>
                       </MDBCol>
                       <MDBCol xs="4">
-                        <p style={{ textAlign: 'left',padding:10 }}>
+                        <p style={{ textAlign: 'left', padding: 10 }}>
                           Norton<br />
                           Sanyati<br />
                           Zvimba East<br />
@@ -1064,7 +1106,7 @@ class App extends Component {
                         <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
                       </MDBCol>
                       <MDBCol xs="4">
-                        <p style={{ textAlign: 'left',padding:10 }}>
+                        <p style={{ textAlign: 'left', padding: 10 }}>
                           Buhera Central<br />
                           Buhera North<br />
                           Buhera South<br />
@@ -1088,7 +1130,7 @@ class App extends Component {
                         </p>
                       </MDBCol>
                       <MDBCol xs="4">
-                        <p style={{ textAlign: 'left',padding:10 }}>
+                        <p style={{ textAlign: 'left', padding: 10 }}>
                           Makoni South<br />
                           Makoni West<br />
                           Musikavanhu<br />
@@ -1131,7 +1173,7 @@ class App extends Component {
                         <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
                       </MDBCol>
                       <MDBCol xs="4">
-                        <p style={{ textAlign: 'left',padding:10 }}>
+                        <p style={{ textAlign: 'left', padding: 10 }}>
                           Binga North<br />
                           Binga South<br />
                           Bubi<br />
@@ -1173,7 +1215,7 @@ class App extends Component {
                         <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
                       </MDBCol>
                       <MDBCol xs="4">
-                        <p style={{ textAlign: 'left',padding:10 }}>
+                        <p style={{ textAlign: 'left', padding: 10 }}>
                           Beitbridge East<br />
                           Beitbridge West<br />
                           Bulilima East<br />
@@ -1216,7 +1258,7 @@ class App extends Component {
                         <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
                       </MDBCol>
                       <MDBCol xs="4">
-                        <p style={{ textAlign: 'left',padding:10 }}>
+                        <p style={{ textAlign: 'left', padding: 10 }}>
                           Chirumhanzu<br />
                           Chirumhanzu-Zibagwe<br />
                           Chiwundura<br />
@@ -1238,7 +1280,7 @@ class App extends Component {
                         </p>
                       </MDBCol>
                       <MDBCol xs="4">
-                        <p style={{ textAlign: 'left',padding:10 }}>
+                        <p style={{ textAlign: 'left', padding: 10 }}>
                           Mberengwa North<br />
                           Mbrerengwa South<br />
                           Mberengwa West<br />
@@ -1279,7 +1321,7 @@ class App extends Component {
             <Button href="#">Diaspsora</Button>
 
             <MDBRow>
-              <MDBCol md="3" className="cardMargin">
+              <MDBCol md="3" className="cardMargin" onClick={this.toggleCollapse("basicCollapse13")}>
                 <Card narrow>
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
@@ -1289,6 +1331,50 @@ class App extends Component {
                   </CardBody>
                 </Card>
               </MDBCol>
+              <MDBCollapse style={{ width: '100%' }} id="basicCollapse13" isOpen={this.state.collapseID}>
+                <div style={{ marginTop: 20, padding: 30 }}>
+                  <Card style={{ paddingTop: 25, paddingBottom: 25 }}>
+                    <p className="Heading"><strong>UK & Europe</strong></p>
+                    <MDBRow>
+                      <MDBCol lg="4">
+                        <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
+                      </MDBCol>
+                      <MDBCol xs="5">
+                        <p style={{ textAlign: 'left', padding: 10 }}>
+                          Greater London, Middlesex & Essex <br />
+                          South of England (Sussex, Surrey) <br />
+                          South West of England (Gloucestershine, Somerset, Bristol, Wiltshire, Cornwall, Devon, Dorset shire)<br />
+                          <strong>South East of England</strong> Berkshire, Oxfordshire, Kent, Buckinghamshire <br />
+                          North West-Greater Manchester, Lancashire, Merseyside, Cheshire <br />
+                          Yorkshire/ South/ West/ North-Leeds, Bradford, Halifax, Huddersfield, Batley, Doncaster, Sheffield, Rotherham <br />
+                          East Riding of Yorkshire & Humberside, Kingston upon hull, Beverly Halifax <br />
+                          North East & Cambria-Newcastle, Sunderland, Middlesbrough, Darham, Darlington, Teeside, Morpeth, Blyrh. <br />
+                          Midlands (Northamptonshire, Derbyshire, Leicestershine. Nottinghamshire) <br/>
+                          Ruthland shire, Herefordshire, Staffordshire, Shropshire, Worcestershire <br/>
+                          <strong>East of England - </strong> Linconshire, Bedfordshire, Cambridgeshire, hertfordshire<br />
+                          <strong>South States,</strong> Delaware, Florida, Gerogia, Maryland, North Carolina, South Carolina, Virginia and West Virginia. The East South.<br />
+                          <strong>South Coast </strong> Hampshire, Portsmouth, Bournemouth, Southampton<br />
+                          East & South Anglia Norfolk Norwick, Suffolk Ipswich
+                          
+                        </p>
+                      </MDBCol>
+                      <MDBCol xs="3">
+                        <p style={{ textAlign: 'left', padding: 10 }}>
+                          Central Europe <br/>
+                          Easter Europe <br/>
+                          Northern Europe <br/>
+                          Southern Europe <br/>
+                          Southeastern Europe <br/>
+                          Western Europe <br/>
+                          Scandinavia
+
+                        </p>
+                      </MDBCol>
+                    </MDBRow>
+
+                  </Card>
+                </div>
+              </MDBCollapse>
               <MDBCol md="3" className="cardMargin">
                 <Card narrow>
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
@@ -1299,7 +1385,7 @@ class App extends Component {
                   </CardBody>
                 </Card>
               </MDBCol>
-              <MDBCol md="3" className="cardMargin">
+              <MDBCol md="3" className="cardMargin" onClick={this.toggleCollapse("basicCollapse11")}>
                 <Card narrow>
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
@@ -1309,7 +1395,40 @@ class App extends Component {
                   </CardBody>
                 </Card>
               </MDBCol>
-              <MDBCol md="3" className="cardMargin">
+              <MDBCollapse style={{ width: '100%' }} id="basicCollapse11" isOpen={this.state.collapseID}>
+                <div style={{ marginTop: 20, padding: 30 }}>
+                  <Card style={{ paddingTop: 25, paddingBottom: 25 }}>
+                    <p className="Heading"><strong>Australia & New Zealand</strong></p>
+                    <MDBRow>
+                      <MDBCol lg="4">
+                        <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
+                      </MDBCol>
+                      <MDBCol xs="8">
+                        <p style={{ textAlign: 'left', padding: 10 }}>
+                          Australia Capital Territory <br />
+                          New South Wales<br />
+                          Northern Territory<br />
+                          Queensland<br />
+                          South Australia<br />
+                          Tasmania - Hobart<br />
+                          Victoria - Melbourne<br />
+                          Western Australia<br />
+                          Bay of plenty<br />
+                          Hawke's Bay<br />
+                          Manawatu-Wanganui<br />
+                          Northland<br />
+                          Taranaki<br />
+                          Walkato<br />
+                          Wellington<br />
+
+                        </p>
+                      </MDBCol>
+                    </MDBRow>
+                  </Card>
+                </div>
+              </MDBCollapse>
+
+              <MDBCol md="3" className="cardMargin" onClick={this.toggleCollapse("basicCollapse12")}>
                 <Card narrow>
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
@@ -1319,6 +1438,40 @@ class App extends Component {
                   </CardBody>
                 </Card>
               </MDBCol>
+              <MDBCollapse style={{ width: '100%' }} id="basicCollapse12" isOpen={this.state.collapseID}>
+                <div style={{ marginTop: 20, padding: 30 }}>
+                  <Card style={{ paddingTop: 25, paddingBottom: 25 }}>
+                    <p className="Heading"><strong>USA & Canada</strong></p>
+                    <MDBRow>
+                      <MDBCol lg="4">
+                        <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
+                      </MDBCol>
+                      <MDBCol xs="4">
+                        <p style={{ textAlign: 'left', padding: 10 }}>
+                          <strong>Northest, Division 1:</strong>New England(Connecticut, Maine, Massachusetts, New Hampshire, Rhode Island, and Vermont<br />
+                          <strong>Midwest States,</strong> Illinois, Indiana, lowa, Kansas, Michigan, Minnesota, Missouri, Nebraska, North Dakota, Ohio, South Dakota, and Wisconsin.<br />
+                          <strong>South States,</strong> Delaware, Florida, Gerogia, Maryland, North Carolina, South Carolina, Virginia and West Virginia. The East South.<br />
+                          <strong>Central States,</strong> Alabama, Kentucky, Mississipi and Tennessee<br />
+                          <strong>Central States,</strong> Montona, Wyoming, Colorado, New Mexico, Idaho, Utah, Arizona, and Nevada. Pacific States.<br />
+                          Washington, Oregon, California, Alaska, and Hawaii<br />
+
+                        </p>
+                      </MDBCol>
+                      <MDBCol xs="4">
+                        <p style={{ textAlign: 'left', padding: 10 }}>
+                          Atlantic <strong>Region - </strong> Newfoundland and Labrador, Prince Edward Island, Nova Scotia, New Brunswick.<br />
+                          Central <strong>Canada - </strong> Quebec, Ontario.<br />
+                          Praine <strong>Provinces - </strong> Manitoba, Saskatchewan, Alberta.<br />
+                          <strong>West Coast,</strong> British Columbia.<br />
+                          <strong>North - ,</strong> Nunavut, Yukon Territory.<br />
+
+                        </p>
+                      </MDBCol>
+                    </MDBRow>
+
+                  </Card>
+                </div>
+              </MDBCollapse>
 
             </MDBRow>
 
@@ -1533,7 +1686,7 @@ class App extends Component {
 
           <div className="VideoSliderContainers">
             <Container>
-              <Carousel activeItem={1} interval={200000} length={3} slide={true} showControls={true} showIndicators={true} multiItem={true} testimonial={true}>
+              <Carousel activeItem={1} interval={200000} length={3} slide={true} showControls={true} showIndicators={true} multiItem={true} >
                 <CarouselInner>
                   <MDBContainer>
                     <Row>
@@ -1663,6 +1816,10 @@ class App extends Component {
                 </CarouselInner>
               </Carousel>
             </Container>
+
+            <div>
+              <img className="MainImage" src={require('./assests//Images//background6.jpg')} />
+            </div>
 
           </div>
         </div>
