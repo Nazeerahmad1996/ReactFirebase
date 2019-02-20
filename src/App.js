@@ -9,7 +9,7 @@ import * as firebase from 'firebase';
 import {
   MDBContainer, MDBNavbar, MDBNavbarBrand, Button, Card, CardBody, CardImage, CardTitle, CardText,
   MDBBtn, MDBRow, MDBCol, MDBIcon, Carousel, CarouselInner, CarouselItem, Container, Row, Col,
-  MDBAlert, Tooltip, MDBCollapse
+  MDBAlert, Tooltip, MDBCollapse, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter
 } from 'mdbreact';
 import {
   BrowserRouter as Router,
@@ -44,7 +44,14 @@ class App extends Component {
       VolunteerCount: '',
 
       collapseID: "",
+      modal: false
     };
+  }
+
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
   }
 
   toggleCollapse = collapseID => () => {
@@ -357,6 +364,19 @@ class App extends Component {
         <div>
           <img className="MainImage" src={require('./assests//Images//background6.jpg')} />
         </div>
+
+        <MDBContainer>
+          <MDBModal isOpen={this.state.modal} toggle={this.toggle}>
+            <MDBModalHeader toggle={this.toggle}>Alert</MDBModalHeader>
+            <MDBModalBody>
+              <p>You've selected 50/150,000 recipients to receive the Message</p>
+            </MDBModalBody>
+            <MDBModalFooter>
+              <MDBBtn size="sm" color="secondary" onClick={this.toggle}>Close</MDBBtn>
+
+            </MDBModalFooter>
+          </MDBModal>
+        </MDBContainer>
         {/* <div>
           <img style={{width:'100%',height:'auto'}} src={require('./assests//Images//arise2.jpg')} />
         </div> */}
@@ -481,7 +501,8 @@ class App extends Component {
                   <div className="Form1">
                     <h4 className="FromHeading"><strong>ADD CONTACT</strong></h4>
                     <h4 className="FromHeading"><strong>{this.state.CommunicationCount}</strong></h4>
-                    <p className="formBottomText">To volunteer with Arise Zimbabwe, enter a few details for the campaign team to contact you.</p>
+                    {/* <p className="formBottomText">To volunteer with Arise Zimbabwe, enter a few details for the campaign team to contact you.</p> */}
+                    <p className="formBottomText">Enter the mobile numbers of your friends & relatives so they can receive critical communication via SMS Broadcast during internet black out in Zimbabwe</p>
 
                     <div>
 
@@ -503,17 +524,20 @@ class App extends Component {
 
                 <Card style={{ height: 375, marginTop: 5 }}>
                   <div className="Form1">
-                    <h4 className="FromHeading"><strong>CONTACT YOU MP OR MEP</strong></h4>
+                    <h4 className="FromHeading"><strong>SEND CAMPAIGN MESSAGES</strong></h4>
                     {/* <h4 className="FromHeading"><strong>{this.state.CommunicationCount}</strong></h4> */}
                     {/* <p className="formBottomText">To volunteer with Arise Zimbabwe, enter a few details for the campaign team to contact you.</p> */}
-
                     <div>
 
                       <div className="formInput">
                         <input value={this.state.MobileNumber} onChange={(e) => { this.setState({ MobileNumber: e.target.value }) }}
-                          type="Text" className="form-control" placeholder="Enter Post Code" />
+                          type="Text" className="form-control" placeholder="Select Province/Area" />
                       </div>
                       <div className="formInput">
+                        <input value={this.state.Region} onChange={(e) => { this.setState({ Region: e.target.value }) }}
+                          type="Text" className="form-control" placeholder="Select Number of Recipients" />
+                      </div>
+                      {/* <div className="formInput">
                         <div className="input-group">
                           <div className="input-group-prepend">
                             <span className="input-group-text" id="basic-addon">
@@ -523,17 +547,15 @@ class App extends Component {
                           <textarea onChange={(e) => { this.setState({ Comment: e.target.value }) }}
                             className="form-control" placeholder="Message" id="exampleFormControlTextarea1" rows="5"></textarea>
                         </div>
-                      </div>
-                      <div className="formInput">
-                        <input value={this.state.Region} onChange={(e) => { this.setState({ Region: e.target.value }) }}
-                          type="Text" className="form-control" placeholder="First Name" />
-                      </div>
-                      <div className="formInput">
-                        <input value={this.state.Region} onChange={(e) => { this.setState({ Region: e.target.value }) }}
-                          type="Text" className="form-control" placeholder="Last Name" />
-                      </div>
+                      </div> */}
+                      <p style={{ marginTop: 10, fontSize: 15 }}>CHOOSE TEMPLETE</p>
+                      <ul>
+                        <li style={{ textAlign: 'left', fontSize: 14, marginTop: 5 }}>Templete 1</li>
+                        <li style={{ textAlign: 'left', fontSize: 14 }}>Templete 2</li>
+                        <li style={{ textAlign: 'left', fontSize: 14 }}>Templete 3</li>
+                      </ul>
                       <div className="text-center">
-                        <MDBBtn color="danger" size="sm">Submit</MDBBtn>
+                        <MDBBtn onClick={this.toggle} color="danger" size="sm">Submit</MDBBtn>
 
                       </div>
                     </div>
@@ -546,7 +568,8 @@ class App extends Component {
                   <div className="Form1">
                     <h4 className="FromHeading"><strong>REPORT INCIDENTS</strong></h4>
                     <h4 className="FromHeading"><strong>{this.state.ReportCount}</strong></h4>
-                    <p className="formBottomText">Enter the Mobile numbers of your friends & relatives so they can receive critical communication via SMS Broadcast during internet black out in Zimbabwe.</p>
+                    {/* <p className="formBottomText">Enter the Mobile numbers of your friends & relatives so they can receive critical communication via SMS Broadcast during internet black out in Zimbabwe.</p> */}
+                    <p className="formBottomText">Now you can report any critical Information on the # Shutdown Zimbabwe situation</p>
 
                     <div>
                       <div className="formInput">
@@ -735,7 +758,7 @@ class App extends Component {
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
                     <CardTitle className="CardTitle">Harare Province</CardTitle>
-                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardText className="CardDescription">Please follow your respective constituency`s Facebook page through the links below or get in touch with local volunteer Coordinators to trace missing relatives and friends. Lets do a forensic inventory of how much damage has been inflicted in our communities.</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
@@ -802,7 +825,7 @@ class App extends Component {
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
                     <CardTitle className="CardTitle">Bulawayo Province</CardTitle>
-                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardText className="CardDescription">Please follow your respective constituency`s Facebook page through the links below or get in touch with local volunteer Coordinators to trace missing relatives and friends. Lets do a forensic inventory of how much damage has been inflicted in our communities.</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
@@ -847,7 +870,7 @@ class App extends Component {
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
                     <CardTitle className="CardTitle">Masvingo Province</CardTitle>
-                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardText className="CardDescription">Please follow your respective constituency`s Facebook page through the links below or get in touch with local volunteer Coordinators to trace missing relatives and friends. Lets do a forensic inventory of how much damage has been inflicted in our communities.</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
@@ -911,7 +934,7 @@ class App extends Component {
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
                     <CardTitle className="CardTitle">Mashonaland Central</CardTitle>
-                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardText className="CardDescription">Please follow your respective constituency`s Facebook page through the links below or get in touch with local volunteer Coordinators to trace missing relatives and friends. Lets do a forensic inventory of how much damage has been inflicted in our communities.</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
@@ -969,7 +992,7 @@ class App extends Component {
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
                     <CardTitle className="CardTitle">Mashonaland East</CardTitle>
-                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardText className="CardDescription">Please follow your respective constituency`s Facebook page through the links below or get in touch with local volunteer Coordinators to trace missing relatives and friends. Lets do a forensic inventory of how much damage has been inflicted in our communities.</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
@@ -1031,7 +1054,7 @@ class App extends Component {
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
                     <CardTitle className="CardTitle">Mashonaland West</CardTitle>
-                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardText className="CardDescription">Please follow your respective constituency`s Facebook page through the links below or get in touch with local volunteer Coordinators to trace missing relatives and friends. Lets do a forensic inventory of how much damage has been inflicted in our communities.</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
@@ -1091,7 +1114,7 @@ class App extends Component {
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
                     <CardTitle className="CardTitle">Manicaland Province</CardTitle>
-                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardText className="CardDescription">Please follow your respective constituency`s Facebook page through the links below or get in touch with local volunteer Coordinators to trace missing relatives and friends. Lets do a forensic inventory of how much damage has been inflicted in our communities.</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
@@ -1158,7 +1181,7 @@ class App extends Component {
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
                     <CardTitle className="CardTitle">Matebeleland North</CardTitle>
-                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardText className="CardDescription">Please follow your respective constituency`s Facebook page through the links below or get in touch with local volunteer Coordinators to trace missing relatives and friends. Lets do a forensic inventory of how much damage has been inflicted in our communities.</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
@@ -1200,7 +1223,7 @@ class App extends Component {
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
                     <CardTitle className="CardTitle">Matebeleland South</CardTitle>
-                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardText className="CardDescription">Please follow your respective constituency`s Facebook page through the links below or get in touch with local volunteer Coordinators to trace missing relatives and friends. Lets do a forensic inventory of how much damage has been inflicted in our communities.</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
@@ -1243,7 +1266,7 @@ class App extends Component {
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
                     <CardTitle className="CardTitle">Midlands Province</CardTitle>
-                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardText className="CardDescription">Please follow your respective constituency`s Facebook page through the links below or get in touch with local volunteer Coordinators to trace missing relatives and friends. Lets do a forensic inventory of how much damage has been inflicted in our communities.</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
@@ -1326,7 +1349,7 @@ class App extends Component {
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
                     <CardTitle className="CardTitle">UK & Europe</CardTitle>
-                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardText className="CardDescription">Please follow your respective constituency`s Facebook page through the links below or get in touch with local volunteer Coordinators to trace missing relatives and friends. Lets do a forensic inventory of how much damage has been inflicted in our communities.</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
@@ -1334,7 +1357,7 @@ class App extends Component {
               <MDBCollapse style={{ width: '100%' }} id="basicCollapse13" isOpen={this.state.collapseID}>
                 <div style={{ marginTop: 20, padding: 30 }}>
                   <Card style={{ paddingTop: 25, paddingBottom: 25 }}>
-                    <p className="Heading"><strong>UK & Europe</strong></p>
+                    <p className="Heading"><strong>UK & Europe & Ireland & Scotland</strong></p>
                     <MDBRow>
                       <MDBCol lg="4">
                         <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
@@ -1349,48 +1372,110 @@ class App extends Component {
                           Yorkshire/ South/ West/ North-Leeds, Bradford, Halifax, Huddersfield, Batley, Doncaster, Sheffield, Rotherham <br />
                           East Riding of Yorkshire & Humberside, Kingston upon hull, Beverly Halifax <br />
                           North East & Cambria-Newcastle, Sunderland, Middlesbrough, Darham, Darlington, Teeside, Morpeth, Blyrh. <br />
-                          Midlands (Northamptonshire, Derbyshire, Leicestershine. Nottinghamshire) <br/>
-                          Ruthland shire, Herefordshire, Staffordshire, Shropshire, Worcestershire <br/>
+                          Midlands (Northamptonshire, Derbyshire, Leicestershine. Nottinghamshire) <br />
+                          Ruthland shire, Herefordshire, Staffordshire, Shropshire, Worcestershire <br />
                           <strong>East of England - </strong> Linconshire, Bedfordshire, Cambridgeshire, hertfordshire<br />
                           <strong>South States,</strong> Delaware, Florida, Gerogia, Maryland, North Carolina, South Carolina, Virginia and West Virginia. The East South.<br />
                           <strong>South Coast </strong> Hampshire, Portsmouth, Bournemouth, Southampton<br />
                           East & South Anglia Norfolk Norwick, Suffolk Ipswich
-                          
+
                         </p>
                       </MDBCol>
                       <MDBCol xs="3">
                         <p style={{ textAlign: 'left', padding: 10 }}>
-                          Central Europe <br/>
-                          Easter Europe <br/>
-                          Northern Europe <br/>
-                          Southern Europe <br/>
-                          Southeastern Europe <br/>
-                          Western Europe <br/>
+                          Central Europe <br />
+                          Easter Europe <br />
+                          Northern Europe <br />
+                          Southern Europe <br />
+                          Southeastern Europe <br />
+                          Western Europe <br />
                           Scandinavia
 
                         </p>
                       </MDBCol>
+
+                      <MDBCol xs="6">
+                        <p style={{ textAlign: 'left', padding: 10 }}>
+                          <strong>Connaught</strong>: Galway,Leitrim,Mayo,Roscommon,Sligo,Croagh,Patrick<br />
+                          <strong>Munster</strong>: Clare,Cork,Limerick,Tipperary,North Tipperary,SOuth Tipperary, Waterford<br />
+                          <strong>Leinster</strong>: Carlow,Dublin Region, Dublin, Dun Laoghaire-Rathdown,Fingal,South Dublin Kildare,Kilkenny,Laois,Longford,Louth,Meath,Offaly,Westmeath,Wexford,Wicklow <br />
+                          <strong>Ulster: North Ireland</strong>: Antrim,Leitrim,Armagh,Cavan,Donegal,Down,Fermanagh,Londonderry,Monaghan,Tyrone <br />
+
+
+                        </p>
+                      </MDBCol>
+                      <MDBCol xs="6">
+                        <p style={{ textAlign: 'left', padding: 10 }}>
+                          <strong>Ayshire and Arran</strong>: East Ayshire, North Ayshire, and South Ayshire<br />
+                          <strong>Scottish Border</strong><br />
+                          <strong>Dumfries and Galloway</strong><br />
+                          <strong>Fife</strong>: Midlothian, Fife, Scottish Borders, West Lothian<br />
+                          <strong>Forth Valley</strong> <br />
+                          <strong>Central Scotland</strong>: Clackmannanshire, Falkirk and Stirling, Angus, Dundee, Perth and Kinross, Edinburgh, East Lothian<br />
+                          <strong>Greater Glasgow and Clyde</strong> <br />
+                          <strong>Inverclyde</strong>: Renfrewshire and West Dunbartonshire <br />
+                          <strong>Greater Glasgow</strong>: City of Glasgow, East Dunbartonshire, East Renfrewshire <br />
+                          <strong>Highland</strong>: Argyll and Bute and Highland, Moray, Na h-Eileana Siar (West isles), Orkney <br />
+                          <strong>Lothian</strong>: City of Edinburgh, East Lothian, Midlothian and West Lothian
+
+                        </p>
+                      </MDBCol>
+
                     </MDBRow>
 
                   </Card>
                 </div>
               </MDBCollapse>
-              <MDBCol md="3" className="cardMargin">
+              <MDBCol md="3" className="cardMargin" onClick={this.toggleCollapse("basicCollapse16")}>
                 <Card narrow>
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
                     <CardTitle className="CardTitle">SA & Southern  Africa</CardTitle>
-                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardText className="CardDescription">Please follow your respective constituency`s Facebook page through the links below or get in touch with local volunteer Coordinators to trace missing relatives and friends. Lets do a forensic inventory of how much damage has been inflicted in our communities.</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
               </MDBCol>
+              <MDBCollapse style={{ width: '100%' }} id="basicCollapse16" isOpen={this.state.collapseID}>
+                <div style={{ marginTop: 20, padding: 30 }}>
+                  <Card style={{ paddingTop: 25, paddingBottom: 25 }}>
+                    <p className="Heading"><strong>South Africa</strong></p>
+                    <MDBRow>
+                      <MDBCol lg="4">
+                        <img style={{ height: 370, width: 250 }} src={require('./assests/Images/arise.jpg')} />
+                      </MDBCol>
+                      <MDBCol xs="8">
+                        <p style={{ textAlign: 'left', padding: 10 }}>
+                          <strong>South Africa</strong> <br />
+                          Cape Town and the Cape Peninsula<br />
+                          Eastern Cape<br />
+                          Northern Cape<br />
+                          Free State<br />
+                          KwaZulu-Naral: Durban<br />
+                          Mpumalanga<br />
+                          Gauteng: Johanessburg<br />
+                          Limpopo Province<br />
+                          North West Province<br /><br />
+                          Botswana<br />
+                          Mozambique<br />
+                          Malawi<br />
+                          Zimibia<br />
+                          Lesostho<br />
+                          Tanzania<br />
+                          Angola<br />
+
+                        </p>
+                      </MDBCol>
+                    </MDBRow>
+                  </Card>
+                </div>
+              </MDBCollapse>
               <MDBCol md="3" className="cardMargin" onClick={this.toggleCollapse("basicCollapse11")}>
                 <Card narrow>
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
                     <CardTitle className="CardTitle">Australia & New Zealand</CardTitle>
-                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardText className="CardDescription">Please follow your respective constituency`s Facebook page through the links below or get in touch with local volunteer Coordinators to trace missing relatives and friends. Lets do a forensic inventory of how much damage has been inflicted in our communities.</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
@@ -1433,7 +1518,7 @@ class App extends Component {
                   <CardImage cascade className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
                   <CardBody cascade>
                     <CardTitle className="CardTitle">USA & Canada</CardTitle>
-                    <CardText className="CardDescription">Please contact your respective regions and local Conveners and get on board the unstopable team</CardText>
+                    <CardText className="CardDescription">Please follow your respective constituency`s Facebook page through the links below or get in touch with local volunteer Coordinators to trace missing relatives and friends. Lets do a forensic inventory of how much damage has been inflicted in our communities.</CardText>
                     <MDBBtn color="amber">Join Now</MDBBtn>
                   </CardBody>
                 </Card>
