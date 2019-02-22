@@ -429,7 +429,7 @@ class App extends Component {
               <MDBCol lg="3">
 
 
-                <Card style={{ height: 435, marginTop: 5 }}>
+                <Card style={{ height: 590, marginTop: 5 }}>
                   <div className="Form1">
                     <h4 className="FromHeading"><strong>VOLUNTEER</strong></h4>
                     <h4 className="FromHeading"><strong>{this.state.VolunteerCount}</strong></h4>
@@ -497,7 +497,7 @@ class App extends Component {
               </MDBCol>
               <MDBCol lg="3">
 
-                <Card style={{ height: 435, marginTop: 5 }}>
+                <Card style={{ height: 590, marginTop: 5 }}>
                   <div className="Form1">
                     <h4 className="FromHeading"><strong>ADD CONTACT</strong></h4>
                     <h4 className="FromHeading"><strong>{this.state.CommunicationCount}</strong></h4>
@@ -519,11 +519,6 @@ class App extends Component {
 
                       </div>
                     </div>
-                  </div>
-                </Card>
-
-                <Card style={{ height: 375, marginTop: 5 }}>
-                  <div className="Form1">
                     <h4 className="FromHeading"><strong>SEND CAMPAIGN MESSAGES</strong></h4>
                     {/* <h4 className="FromHeading"><strong>{this.state.CommunicationCount}</strong></h4> */}
                     {/* <p className="formBottomText">To volunteer with Arise Zimbabwe, enter a few details for the campaign team to contact you.</p> */}
@@ -563,7 +558,7 @@ class App extends Component {
                 </Card>
               </MDBCol>
               <MDBCol lg="3">
-                <Card style={{ height: 435, marginTop: 5 }}>
+                <Card style={{ height: 590, marginTop: 5 }}>
 
                   <div className="Form1">
                     <h4 className="FromHeading"><strong>REPORT INCIDENTS</strong></h4>
