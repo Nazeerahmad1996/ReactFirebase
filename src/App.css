@@ -136,14 +136,57 @@
 .CardTitle{
   font-size: 18px;
 }
-.CardDescription{
-  font-size: 8px;
-}
+
 #input[type="text"]
 {
     font-size:11px;
 }
-
+.Firstpopup{
+  border-radius: 10px;
+  background-color: #BB2121;
+  height: 160px;
+  margin-top: 20px;
+}
+.Secondpopup{
+  border-radius: 10px;
+  background-color: #397B1C;
+  height: 160px;
+  margin-top: 20px;
+}
+.Thirdpopup{
+  border-radius: 10px;
+  background-color: #D8D60D;
+  height: 160px;
+  margin-top: 20px;
+}
+.Forthpopup{
+  border-radius: 10px;
+  background-color: #000000;
+  height: 160px;
+  margin-top: 20px;
+}
+.Fifthpopup{
+  border-radius: 10px;
+  background-color: #BB2121;
+  height: 160px;
+  margin-top: 20px;
+}
+.Sixthpopup{
+  border-radius: 10px;
+  background-color: #fff;
+  height: 160px;
+  margin-top: 20px;
+  border:1px solid rgb(87, 79, 79);
+}
+.PopUpText{
+  font-size: 3vmax;
+  padding: 20px;
+  color: #fff;
+}
+.PopUpText2{
+  font-size: 3vmax;
+  padding: 20px;
+}
 .form-control[type="text"]{
   font-size:11px;
 }

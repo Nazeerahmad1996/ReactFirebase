@@ -44,13 +44,55 @@ class App extends Component {
       VolunteerCount: '',
 
       collapseID: "",
-      modal: false
+      modal: false,
+      modal2: false,
+      modal3: false,
+      modal4: false,
+      modal5: false,
+      modal6: false,
+      modal7: false,
     };
   }
 
   toggle = () => {
     this.setState({
       modal: !this.state.modal
+    });
+  }
+
+  toggle2 = () => {
+    this.setState({
+      modal2: !this.state.modal2
+    });
+  }
+
+  toggle3 = () => {
+    this.setState({
+      modal3: !this.state.modal3
+    });
+  }
+
+  toggle4 = () => {
+    this.setState({
+      modal4: !this.state.modal4
+    });
+  }
+
+  toggle5 = () => {
+    this.setState({
+      modal5: !this.state.modal5
+    });
+  }
+
+  toggle6 = () => {
+    this.setState({
+      modal6: !this.state.modal6
+    });
+  }
+
+  toggle7 = () => {
+    this.setState({
+      modal7: !this.state.modal7
     });
   }
 
@@ -377,6 +419,97 @@ class App extends Component {
             </MDBModalFooter>
           </MDBModal>
         </MDBContainer>
+
+
+        <MDBContainer>
+          <MDBModal isOpen={this.state.modal2} toggle={this.toggle2}>
+            <MDBModalHeader toggle={this.toggle}>Alert</MDBModalHeader>
+            <MDBModalBody>
+              <p>Choose Country</p>
+              <ul style={{textAlign: "left"}}>
+                <li>US</li>
+                <li>UK</li>
+                <li>Australia</li>
+                <li>Pakistan</li>
+                <li>Canada</li>
+              </ul>
+            </MDBModalBody>
+            <MDBModalFooter>
+              <MDBBtn size="sm" color="secondary" onClick={this.toggle2}>Close</MDBBtn>
+
+            </MDBModalFooter>
+          </MDBModal>
+        </MDBContainer>
+
+
+        <MDBContainer>
+          <MDBModal isOpen={this.state.modal3} toggle={this.toggle3}>
+            <MDBModalHeader toggle={this.toggle}>Alert</MDBModalHeader>
+            <MDBModalBody>
+              <p>You've selected 50/150,000 recipients to receive the Message</p>
+            </MDBModalBody>
+            <MDBModalFooter>
+              <MDBBtn size="sm" color="secondary" onClick={this.toggle3}>Close</MDBBtn>
+
+            </MDBModalFooter>
+          </MDBModal>
+        </MDBContainer>
+
+
+        <MDBContainer>
+          <MDBModal isOpen={this.state.modal4} toggle={this.toggle4}>
+            <MDBModalHeader toggle={this.toggle}>Alert</MDBModalHeader>
+            <MDBModalBody>
+              <p>You've selected 50/150,000 recipients to receive the Message</p>
+            </MDBModalBody>
+            <MDBModalFooter>
+              <MDBBtn size="sm" color="secondary" onClick={this.toggle4}>Close</MDBBtn>
+
+            </MDBModalFooter>
+          </MDBModal>
+        </MDBContainer>
+
+
+        <MDBContainer>
+          <MDBModal isOpen={this.state.modal5} toggle={this.toggle5}>
+            <MDBModalHeader toggle={this.toggle}>Alert</MDBModalHeader>
+            <MDBModalBody>
+              <p>You've selected 50/150,000 recipients to receive the Message</p>
+            </MDBModalBody>
+            <MDBModalFooter>
+              <MDBBtn size="sm" color="secondary" onClick={this.toggle5}>Close</MDBBtn>
+
+            </MDBModalFooter>
+          </MDBModal>
+        </MDBContainer>
+
+
+        <MDBContainer>
+          <MDBModal isOpen={this.state.modal6} toggle={this.toggle6}>
+            <MDBModalHeader toggle={this.toggle}>Alert</MDBModalHeader>
+            <MDBModalBody>
+              <p>You've selected 50/150,000 recipients to receive the Message</p>
+            </MDBModalBody>
+            <MDBModalFooter>
+              <MDBBtn size="sm" color="secondary" onClick={this.toggle6}>Close</MDBBtn>
+
+            </MDBModalFooter>
+          </MDBModal>
+        </MDBContainer>
+
+
+        <MDBContainer>
+          <MDBModal isOpen={this.state.modal7} toggle={this.toggle7}>
+            <MDBModalHeader toggle={this.toggle}>Alert</MDBModalHeader>
+            <MDBModalBody>
+              <p>You've selected 50/150,000 recipients to receive the Message</p>
+            </MDBModalBody>
+            <MDBModalFooter>
+              <MDBBtn size="sm" color="secondary" onClick={this.toggle7}>Close</MDBBtn>
+
+            </MDBModalFooter>
+          </MDBModal>
+        </MDBContainer>
         {/* <div>
           <img style={{width:'100%',height:'auto'}} src={require('./assests//Images//arise2.jpg')} />
         </div> */}
@@ -594,6 +727,49 @@ class App extends Component {
             </MDBRow>
           </div>
         </div>
+
+
+        <MDBRow style={{paddingLeft:40, paddingRight:40}}>
+          <MDBCol md="6">
+            <div className="Firstpopup" onClick={this.toggle2}>
+              <p className="PopUpText">Contact Local Local & int Members of parliament</p>
+            </div>
+
+          </MDBCol>
+          <MDBCol md="6">
+            <div className="Secondpopup" onClick={this.toggle3}>
+              <p className="PopUpText">Contact Local & int. NGOS</p>
+            </div>
+          </MDBCol>
+        </MDBRow>
+
+        <MDBRow style={{paddingLeft:40, paddingRight:40}}>
+          <MDBCol md="6">
+            <div className="Thirdpopup" onClick={this.toggle4}>
+              <p className="PopUpText">Contact Local & Churches</p>
+            </div>
+
+          </MDBCol>
+          <MDBCol md="6">
+            <div className="Forthpopup"onClick={this.toggle5}>
+              <p className="PopUpText">Contact Local & int.Labour Unions</p>
+            </div>
+          </MDBCol>
+        </MDBRow>
+
+        <MDBRow style={{paddingLeft:40, paddingRight:40}}>
+          <MDBCol md="6">
+            <div className="Fifthpopup" onClick={this.toggle6}>
+              <p className="PopUpText">Contact Local & Int. Internet Associations</p>
+            </div>
+
+          </MDBCol>
+          <MDBCol md="6">
+            <div className="Sixthpopup" onClick={this.toggle7}>
+              <p className="PopUpText2">Contact Local & Int Minister</p>
+            </div>
+          </MDBCol>
+        </MDBRow>
 
         {/* 
           <div className="FormContainer">
