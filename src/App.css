@@ -142,50 +142,50 @@
     font-size:11px;
 }
 .Firstpopup{
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #BB2121;
-  height: 160px;
-  margin-top: 20px;
+  margin-top: 6px;
 }
 .Secondpopup{
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #397B1C;
-  height: 160px;
-  margin-top: 20px;
+  margin-top: 6px;
 }
 .Thirdpopup{
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #D8D60D;
-  height: 160px;
-  margin-top: 20px;
+  margin-top: 6px;
 }
 .Forthpopup{
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #000000;
-  height: 160px;
-  margin-top: 20px;
+  margin-top: 6px;
 }
 .Fifthpopup{
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #BB2121;
-  height: 160px;
-  margin-top: 20px;
+  margin-top: 6px;
 }
 .Sixthpopup{
-  border-radius: 10px;
   background-color: #fff;
-  height: 160px;
-  margin-top: 20px;
-  border:1px solid rgb(87, 79, 79);
+  margin-top: 6px;
 }
 .PopUpText{
-  font-size: 3vmax;
-  padding: 20px;
+  font-size: 0.9vmax;
+  padding: 3px;
   color: #fff;
 }
 .PopUpText2{
-  font-size: 3vmax;
-  padding: 20px;
+  border-radius: 5px;
+  font-size: 0.9vmax;
+  padding: 3px;
+  border:1px solid rgb(87, 79, 79);
+}
+.PopHeading{
+  font-size: 25px;
+  font-weight: 500;
+  font-family: sans-serif;
+  text-align: center;
 }
 .form-control[type="text"]{
   font-size:11px;

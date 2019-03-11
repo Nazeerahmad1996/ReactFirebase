@@ -426,7 +426,7 @@ class App extends Component {
             <MDBModalHeader toggle={this.toggle}>Alert</MDBModalHeader>
             <MDBModalBody>
               <p>Choose Country</p>
-              <ul style={{textAlign: "left"}}>
+              <ul style={{ textAlign: "left" }}>
                 <li>US</li>
                 <li>UK</li>
                 <li>Australia</li>
@@ -724,53 +724,54 @@ class App extends Component {
                   </div>
                 </Card>
               </MDBCol>
+              <MDBCol lg="3" style={{marginTop:'10%'}}>
+                <h4 className="PopHeading"><strong>How to Contact</strong></h4>
+                <MDBRow style={{}}>
+                  <MDBCol md="6">
+                    <div className="Firstpopup" onClick={this.toggle2}>
+                      <p className="PopUpText">Contact Local Local & int Members of parliament</p>
+                    </div>
+
+                  </MDBCol>
+                  <MDBCol md="6">
+                    <div className="Secondpopup" onClick={this.toggle3}>
+                      <p className="PopUpText">Contact Local & int. NGOS</p>
+                    </div>
+                  </MDBCol>
+                </MDBRow>
+
+                <MDBRow style={{}}>
+                  <MDBCol md="6">
+                    <div className="Thirdpopup" onClick={this.toggle4}>
+                      <p className="PopUpText">Contact Local & Churches</p>
+                    </div>
+
+                  </MDBCol>
+                  <MDBCol md="6">
+                    <div className="Forthpopup" onClick={this.toggle5}>
+                      <p className="PopUpText">Contact Local & int.Labour Unions</p>
+                    </div>
+                  </MDBCol>
+                </MDBRow>
+
+                <MDBRow >
+                  <MDBCol md="6">
+                    <div className="Fifthpopup" onClick={this.toggle6}>
+                      <p className="PopUpText">Contact Local & Int. Internet Associations</p>
+                    </div>
+
+                  </MDBCol>
+                  <MDBCol md="6">
+                    <div className="Sixthpopup" onClick={this.toggle7}>
+                      <p className="PopUpText2">Contact Local & Int Minister</p>
+                    </div>
+                  </MDBCol>
+                </MDBRow>
+
+              </MDBCol>
             </MDBRow>
           </div>
         </div>
-
-
-        <MDBRow style={{paddingLeft:40, paddingRight:40}}>
-          <MDBCol md="6">
-            <div className="Firstpopup" onClick={this.toggle2}>
-              <p className="PopUpText">Contact Local Local & int Members of parliament</p>
-            </div>
-
-          </MDBCol>
-          <MDBCol md="6">
-            <div className="Secondpopup" onClick={this.toggle3}>
-              <p className="PopUpText">Contact Local & int. NGOS</p>
-            </div>
-          </MDBCol>
-        </MDBRow>
-
-        <MDBRow style={{paddingLeft:40, paddingRight:40}}>
-          <MDBCol md="6">
-            <div className="Thirdpopup" onClick={this.toggle4}>
-              <p className="PopUpText">Contact Local & Churches</p>
-            </div>
-
-          </MDBCol>
-          <MDBCol md="6">
-            <div className="Forthpopup"onClick={this.toggle5}>
-              <p className="PopUpText">Contact Local & int.Labour Unions</p>
-            </div>
-          </MDBCol>
-        </MDBRow>
-
-        <MDBRow style={{paddingLeft:40, paddingRight:40}}>
-          <MDBCol md="6">
-            <div className="Fifthpopup" onClick={this.toggle6}>
-              <p className="PopUpText">Contact Local & Int. Internet Associations</p>
-            </div>
-
-          </MDBCol>
-          <MDBCol md="6">
-            <div className="Sixthpopup" onClick={this.toggle7}>
-              <p className="PopUpText2">Contact Local & Int Minister</p>
-            </div>
-          </MDBCol>
-        </MDBRow>
-
         {/* 
           <div className="FormContainer">
 
