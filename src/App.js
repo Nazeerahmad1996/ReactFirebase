@@ -33,6 +33,7 @@ class App extends Component {
       Email: "",
       OtherContact: "",
       OptionChoose: "",
+      CountryChoose: '',
       MobileNumber: "",
       Region: "",
 
@@ -426,13 +427,15 @@ class App extends Component {
             <MDBModalHeader toggle={this.toggle}>Alert</MDBModalHeader>
             <MDBModalBody>
               <p>Choose Country</p>
-              <ul style={{ textAlign: "left" }}>
-                <li>US</li>
-                <li>UK</li>
-                <li>Australia</li>
-                <li>Pakistan</li>
-                <li>Canada</li>
-              </ul>
+              <select onChange={(e) => { this.setState({ CountryChoose: e.target.value }) }} className="browser-default custom-select">
+                <option>Choose your option</option>
+                <option value="Writing">US</option>
+                <option value="Legal">UK</option>
+                <option value="Finance">Australia</option>
+                <option value="Policy">Pakistan</option>
+                <option value="Policy">Canada</option>
+
+              </select>
             </MDBModalBody>
             <MDBModalFooter>
               <MDBBtn size="sm" color="secondary" onClick={this.toggle2}>Close</MDBBtn>
@@ -724,7 +727,7 @@ class App extends Component {
                   </div>
                 </Card>
               </MDBCol>
-              <MDBCol lg="3" style={{marginTop:'10%'}}>
+              <MDBCol lg="3" style={{ marginTop: '10%' }}>
                 <h4 className="PopHeading"><strong>How to Contact</strong></h4>
                 <MDBRow style={{}}>
                   <MDBCol md="6">
