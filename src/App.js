@@ -9,6 +9,8 @@ import {
   MDBBtn, MDBRow, MDBCol, MDBIcon, Carousel, CarouselInner, CarouselItem, Container, Row, Col,
   CardFooter, Tooltip
 } from 'mdbreact';
+import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed';
+
 import { BrowserRouter as Router } from 'react-router-dom';
 
 class App extends Component {
@@ -48,6 +50,7 @@ class App extends Component {
 
           <img className="MainImage" src={require('./assests/Images/Main.png')} />
         </div>
+
         <div className="MainContainer">
 
           <div className="FormContainer">
@@ -297,6 +300,18 @@ class App extends Component {
                   </CardBody>
                 </Card>
               </MDBCol>
+
+              <MDBCol md="8" className="cardMargin">
+                <Card narrow>
+                  <TwitterTimelineEmbed
+                    sourceType="profile"
+                    screenName="saurabhnemade"
+                    options={{ height: 440 }}
+                  />
+                </Card>
+              </MDBCol>
+
+
 
             </MDBRow>
 
